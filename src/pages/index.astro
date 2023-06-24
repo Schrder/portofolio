@@ -5,6 +5,8 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Welcome to Astro.">
 	<main>
 		<img src="/portofolio/assets/japan_poort.jpg">
+		<img src="/portofolio/assets/japan_bus.jpg">
+		<img src="/portofolio/assets/japan_paal.jpg" alt="">
 	</main>
 </Layout>
 
@@ -13,10 +15,33 @@ import Layout from '../layouts/Layout.astro';
 		margin: 0;
 	}
 
+	main {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: calc(100vh - 16px) calc(100vh - 16px);
+		row-gap: 16px;
+		column-gap: 8px;
+		padding: 8px;
+	}
+
 	img {
-		display: block;
-		margin-inline: auto;
-		max-height: 100vh;
-		max-width: 100vw;
+		/* Reset initistic image widths for css grid */
+		min-width: 0;
+		min-height: 0;
+
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	img:nth-of-type(1) {
+		grid-column: 1/3;
+	}
+
+	img:nth-of-type(1), img:nth-of-type(2) {
+		place-self: center;
+	}
+
+	img:nth-of-type(3) {
+		place-self: end	;
 	}
 </style>
