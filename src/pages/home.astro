@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Image from '../components/Image.astro';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -12,7 +13,19 @@ import Layout from '../layouts/Layout.astro';
 				<a href="https://instagram.com"><img src="/portofolio/assets/instagram-logo.svg"></a>
 			</div>
 		</nav>
-		<img src="/portofolio/assets/japan_poort.jpg">
+
+		<!-- <button popovertarget="my-popover"><img src="/portofolio/assets/japan_poort.jpg"></button>
+		<div id="my-popover" popover>
+			<button style="margin-inline-start: auto; display:block;" popovertarget="my-popover" popovertargetaction="hide">
+				<span aria-hidden=”true”>❌</span>
+			</button>
+			<img src="/portofolio/assets/japan_poort.jpg">
+		</div> -->
+		<Image>
+
+		</Image>
+		
+
 		<img src="/portofolio/assets/japan_bus.jpg">
 		<img src="/portofolio/assets/japan_paal.jpg" alt="">
 	</main>
