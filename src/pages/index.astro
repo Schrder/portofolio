@@ -2,11 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="introductie">
 	<main>
 		<img src="/portofolio/assets/japan_poort.jpg" alt="">
         <div>
-            <h1>tom van der bijll</h1>
+            <h1>tom van der bijl<span>l</span></h1>
             <h2>fotograaf</h2>
         </div>
         <a href="/portofolio/home">ontdek</a>
@@ -33,6 +33,11 @@ import Layout from '../layouts/Layout.astro';
         object-fit: cover;
         grid-row: 1/5;
     }
+
+    h1:hover span {
+		margin-inline-start: 4px;
+		transition: all 0.5s ease-out;
+	}
 
     main a {
         height: min-content;
