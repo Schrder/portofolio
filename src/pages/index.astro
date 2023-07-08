@@ -18,6 +18,8 @@ import Layout from '../layouts/Layout.astro';
         height: 100vh;
         display: grid;
         grid-template-rows: repeat(4, 1fr);
+        color: var(--text-color);
+        background-color: var(--variant-8);
     }
 
     main * {
@@ -49,8 +51,8 @@ import Layout from '../layouts/Layout.astro';
         font-weight: 400;
         padding: 16px;
         background: transparent;
-        color: white;
-        border: 4px solid white;
+        border: 4px solid var(--text-color);
+        color: var(--text-color);
         border-radius: 16px;
 
         text-decoration: none;
@@ -58,17 +60,21 @@ import Layout from '../layouts/Layout.astro';
 
     main div {
         justify-self: center;
-        color: white;
         grid-row: 2;
+        --min-size: 2em;
+        --scaler: 6vmax;
+        --max-size: 8em;
     }
 
     main div h1 {
-        font-size: 5em;
+        font-size: clamp(var(--min-size), var(--scaler), var(--max-size));
         margin: 0;
         font-weight: 700;
     }
 
     main div h2 {
+        --multiplier: 0.5;
+        font-size: clamp(calc(var(--min-size) * var(--multiplier)) , calc(var(--scaler) * var(--multiplier)), calc(var(--max-size) * var(--multiplier)));
         font-weight: 200;
         text-align: center;
     }
