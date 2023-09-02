@@ -28,6 +28,8 @@ import Photo from "../components/Photo.astro";
   section {
     display: grid;
     grid-template-columns: repeat(2, 0.8415fr) 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(5, 22vw);
     gap: 8px;
     grid-column: 1/3;
     padding-inline: 24px;
@@ -44,7 +46,6 @@ import Photo from "../components/Photo.astro";
 
     border-radius: 8px;
     background-color: var(--variant-2);
-    width: 100%;
     grid-column: var(--image-grid-column);
     grid-row: var(--image-grid-row);
     aspect-ratio: var(--image-aspect-ratio);
