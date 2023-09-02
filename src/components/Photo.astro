@@ -1,0 +1,28 @@
+---
+export interface Props {
+  title: string;
+  alt: string;
+  width: string;
+}
+
+const { title, alt, width } = Astro.props;
+const prefix = "/portofolio/assets";
+const widths = [400, 800, 1200];
+
+let srcsetAvif = "";
+let srcsetJpeg = "";
+
+widths.forEach((width) => {
+  const variationName = `${prefix}/${title}_${width}px`;
+  srcsetAvif += `${variationName}.avif ${width}w,`;
+  srcsetJpeg += `${variationName}.jpeg ${width}w`;
+});
+
+const fallbackImage = `${prefix}/${title}_800px.jpg`;
+---
+
+<picture>
+  <source type="image/avif" srcset={srcsetAvif} />
+  <source type="image/jpeg" srcset={srcsetJpeg} />
+  <img src={fallbackImage} width={width} alt={alt} />
+</picture>
