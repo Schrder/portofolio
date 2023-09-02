@@ -1,0 +1,87 @@
+---
+import Layout from "./Layout.astro";
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+  <main>
+    <nav>
+      <!-- TODO: make title into component and reuse it here and in the index -->
+      <h2><a href="/portofolio/home">tom van der bijl<span>l</span></a></h2>
+      <div>
+        <a href="/portofolio/over">over</a>
+        <a href="/portofolio/contact">contact</a>
+        <a href="https://instagram.com"
+          ><img src="/portofolio/assets/instagram-logo.svg" /></a
+        >
+      </div>
+    </nav>
+    <slot />
+  </main>
+</Layout>
+<style>
+  nav {
+    border-block-end: 1px solid black;
+    position: sticky;
+    top: 0;
+    grid-column: 1/3;
+    background-color: var(--variant-2);
+    display: grid;
+    padding-inline: 1em;
+    align-items: center;
+  }
+
+  h2 {
+    cursor: default;
+    font-size: 2em;
+  }
+  h2 a {
+    text-decoration: none;
+  }
+
+  h2:hover span {
+    margin-inline-start: 4px;
+    transition: all 0.5s ease-out;
+  }
+
+  nav h2 {
+    font-weight: 200;
+    grid-column: 1/3;
+    justify-self: center;
+    grid-row: 1;
+  }
+
+  nav div {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  nav div a,
+  h2 > a {
+    color: var(--text-color);
+  }
+
+  nav div a:last-of-type {
+    line-height: 0;
+  }
+
+  nav div a img {
+    width: 24px;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 54px 1fr;
+    column-gap: 8px;
+    row-gap: 8px;
+  }
+</style>

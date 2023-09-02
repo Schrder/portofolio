@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "convert-originals": "node ../convert-png-to-avif-and-jpg portofolio public"
   },
   "dependencies": {
     "astro": "^2.3.0"

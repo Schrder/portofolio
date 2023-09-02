@@ -1,149 +1,93 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import NavigationPage from "../layouts/NavigationPage.astro";
 ---
 
-<Layout title="tom's portoflio">
-	<main>
-		<nav>
-			<!-- TODO: make title into component and reuse it here and in the index -->
-			<h2>tom van der bijl<span>l</span></h2>
-			<div>
-				<a href="/portofolio/over">over</a>
-				<a href="/portofolio/contact">contact</a>
-				<a href="https://instagram.com"><img src="/portofolio/assets/instagram-logo.svg"></a>
-			</div>
-		</nav>
-		<section>
-			<img src="/portofolio/assets/japan_bus.jpg" loading="eager">
-			<img src="/portofolio/assets/japan_poort.jpg" loading="eager">
-			<img src="/portofolio/assets/goudsmid-zurich.jpg" loading="eager" alt="">
-			<img src="/portofolio/assets/verbouwen-amsterdam.jpg" alt="" loading="lazy">
-			<img src="/portofolio/assets/man-met-krant-madrid.jpg" alt="" loading="lazy">
-			<img src="/portofolio/assets/japan_paal.jpg" alt="" loading="lazy">
-			<img src="/portofolio/assets/motor-casablanca.jpg" alt="" loading="lazy">
-			<img src="/portofolio/assets/klaprozen-qazvin.jpg" alt="" loading="lazy">
-		</section>
-	</main>
-</Layout>
+<NavigationPage title="tom's portoflio">
+  <section>
+    <img src="/portofolio/assets/japan_bus.jpg" loading="eager" />
+    <img src="/portofolio/assets/japan_poort.jpg" loading="eager" />
+    <img src="/portofolio/assets/goudsmid-zurich.jpg" loading="eager" alt="" />
+    <img
+      src="/portofolio/assets/verbouwen-amsterdam.jpg"
+      alt=""
+      loading="lazy"
+    />
+    <img
+      src="/portofolio/assets/man-met-krant-madrid.jpg"
+      alt=""
+      loading="lazy"
+    />
+    <img src="/portofolio/assets/japan_paal.jpg" alt="" loading="lazy" />
+    <img src="/portofolio/assets/motor-casablanca.jpg" alt="" loading="lazy" />
+    <img src="/portofolio/assets/klaprozen-qazvin.jpg" alt="" loading="lazy" />
+  </section>
+</NavigationPage>
 
 <style>
-	nav {
-		border-block-end: 1px solid black;
-		position: sticky;
-		top: 0;
-		grid-column: 1/3;
-		background-color: var(--variant-2);
-		display: grid;
-		padding-inline: 1em;
-		align-items: center;
-	}
+  section {
+    display: grid;
+    grid-template-columns: repeat(2, 0.8415fr) 1fr;
+    gap: 8px;
+    grid-column: 1/3;
+    padding-inline: 24px;
+    margin-block-end: 32px;
+  }
 
-	h2 {
-		cursor: default;
-	}
+  img {
+    max-width: 100%;
+    max-height: 100%;
 
-	h2:hover span {
-		margin-inline-start: 4px;
-		transition: all 0.5s ease-out;
-	}
+    /* Reset initistic image widths for css grid */
+    min-width: 0;
+    min-height: 0;
 
-	nav h2 {
-		font-weight: 200;
-		grid-column: 1/3;
-		justify-self: center;
-		grid-row: 1;
-	}
+    border-radius: 8px;
+    background-color: var(--variant-2);
+    width: 100%;
+    grid-column: var(--image-grid-column);
+    grid-row: var(--image-grid-row);
+    aspect-ratio: var(--image-aspect-ratio);
+  }
 
-	nav div {
-		grid-row: 1;
-		grid-column: 2;
-		justify-self: end;
-		display: flex;
-		gap: 8px;
-		align-items: center;
-	}
+  section img:nth-of-type(1) {
+    --image-grid-column: 1 / span 2;
+    --image-grid-row: 1 / span 2;
+    align-self: center;
+    --image-aspect-ratio: 2560/1698;
+  }
 
-	nav div a {
-		color: var(--text-color);
-	}
+  section img:nth-of-type(2) {
+    --image-grid-column: 3;
+    --image-grid-row: 1;
+    --image-aspect-ratio: 2560/1698;
+  }
 
-	nav div a:last-of-type {
-		line-height: 0;
-	}
+  section img:nth-of-type(3) {
+    --image-grid-column: 3;
+    --image-grid-row: 2 / span 2;
+    --image-aspect-ratio: 1719/2560;
+  }
 
-	nav div a img {
-		width: 24px;
-	}
-
-	main {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 48px 1fr;
-		column-gap: 8px;
-		row-gap: 8px;
-	}
-
-	section {
-		display: grid;
-		grid-template-columns: repeat(2, 0.8415fr) 1fr;
-		gap: 8px;
-		grid-column: 1/3;
-		padding-inline: 24px;
-		margin-block-end: 32px;
-	}
-
-	img {
-		max-width: 100%;
-		max-height: 100%;
-
-		/* Reset initistic image widths for css grid */
-		min-width: 0;
-		min-height: 0;
-
-		border-radius: 8px;
-		background-color: var(--variant-2);
-		width: 100%;
-	}
-
-	section img:nth-of-type(1) {
-		grid-column: 1/ span 2;
-    	grid-row: 1/ span 2;
-		align-self: center;
-		aspect-ratio: 2560/1698;
-	}
-
-	section img:nth-of-type(2) {
-		grid-column: 3;
-    	grid-row: 1;
-		aspect-ratio: 2560/1698;
-	}
-
-	section img:nth-of-type(3) {
-		grid-column: 3;
-    	grid-row: 2/ span 2;
-		aspect-ratio: 1719/2560;
-	}
-
-	section img:nth-of-type(4) {
-		grid-column: 1;
-    	grid-row: 3/ span 2;
-		aspect-ratio: 1575/2554;
-	}
-	section img:nth-of-type(5) {
-		grid-row: 3;
-    	grid-column: 2;
-		aspect-ratio: 2560/1709;
-	}
-	section img:nth-of-type(6) {
-		grid-row: 4/ span 2;
-    	grid-column: 3;
-	}
-	section img:nth-of-type(7) {
-		grid-row: 4;
-    	grid-column: 2;
-	}
-	section img:nth-of-type(8) {
-		grid-row: 5;
-    	grid-column: 2;
-	}
+  section img:nth-of-type(4) {
+    --image-grid-column: 1;
+    --image-grid-row: 3 / span 2;
+    --image-aspect-ratio: 1575/2554;
+  }
+  section img:nth-of-type(5) {
+    --image-grid-row: 3;
+    --image-grid-column: 2;
+    --image-aspect-ratio: 2560/1709;
+  }
+  section img:nth-of-type(6) {
+    --image-grid-row: 4 / span 2;
+    --image-grid-column: 3;
+  }
+  section img:nth-of-type(7) {
+    --image-grid-row: 4;
+    --image-grid-column: 2;
+  }
+  section img:nth-of-type(8) {
+    --image-grid-row: 5;
+    --image-grid-column: 2;
+  }
 </style>
