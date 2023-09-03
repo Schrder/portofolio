@@ -3,9 +3,10 @@ export interface Props {
   title: string;
   sizes: string;
   className: string;
+  loading?: string;
 }
 
-const { title, sizes, className } = Astro.props;
+const { title, sizes, className, loading = "lazy" } = Astro.props;
 const prefix = "/portofolio/assets";
 const widths = [400, 800, 1200, 1600, 2000, 2400];
 
@@ -43,5 +44,5 @@ const fallbackImage = `${prefix}/${title}_800px.jpg`;
 <picture class={className}>
   <source type="image/avif" srcset={srcsetAvif} />
   <source type="image/jpeg" srcset={srcsetJpeg} />
-  <img src={fallbackImage} alt={title} sizes={sizes} />
+  <img src={fallbackImage} alt={title} sizes={sizes} loading={loading} />
 </picture>
