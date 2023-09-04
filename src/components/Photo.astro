@@ -15,8 +15,12 @@ let srcsetJpeg = "";
 
 widths.forEach((width) => {
   const variationName = `${prefix}/${title}_${width}px`;
-  srcsetAvif += `${variationName}.avif ${width}w,`;
-  srcsetJpeg += `${variationName}.jpeg ${width}w,`;
+  srcsetAvif += `${variationName}.avif ${width}w`;
+  srcsetJpeg += `${variationName}.jpeg ${width}w`;
+  if (width !== widths[widths.length - 1]) {
+    srcsetAvif += ",";
+    srcsetJpeg += ",";
+  }
 });
 
 const fallbackImage = `${prefix}/${title}_800px.jpg`;
@@ -42,7 +46,7 @@ const fallbackImage = `${prefix}/${title}_800px.jpg`;
   }
 </style>
 <picture class={className}>
-  <source type="image/avif" srcset={srcsetAvif} />
-  <source type="image/jpeg" srcset={srcsetJpeg} />
-  <img src={fallbackImage} alt={title} sizes={sizes} loading={loading} />
+  <source type="image/avif" srcset={srcsetAvif} sizes={sizes} />
+  <source type="image/jpeg" srcset={srcsetJpeg} sizes={sizes} />
+  <img src={fallbackImage} alt={title} loading={loading} />
 </picture>
