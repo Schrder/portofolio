@@ -63,11 +63,17 @@ import Layout from "../layouts/Layout.astro";
   }
 
   main div h1 {
-    font-size: 5em;
+    text-align: center;
+    font-size: 3em;
     margin: 0;
     font-weight: 700;
   }
 
+  @media (min-width: 768px) {
+    main div h1 {
+      font-size: 5em;
+    }
+  }
   main div h2 {
     font-weight: 200;
     text-align: center;
