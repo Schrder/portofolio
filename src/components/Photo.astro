@@ -45,8 +45,10 @@ const fallbackImage = `${prefix}/${title}_800px.jpg`;
     grid-area: var(--photo-grid-area);
   }
 </style>
-<picture class={className}>
-  <source type="image/avif" srcset={srcsetAvif} sizes={sizes} />
-  <source type="image/jpeg" srcset={srcsetJpeg} sizes={sizes} />
-  <img src={fallbackImage} alt={title} loading={loading} />
-</picture>
+<button class={className}>
+  <picture>
+    <source type="image/avif" srcset={srcsetAvif} sizes={sizes} />
+    <source type="image/jpeg" srcset={srcsetJpeg} sizes={sizes} />
+    <img src={fallbackImage} alt={title} loading={loading} />
+  </picture>
+</button>
