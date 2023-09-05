@@ -90,6 +90,47 @@ import Photo from "../components/Photo.astro";
     </div>
   </section>
 </NavigationPage>
+<script>
+  document
+    .getElementById("berlijn-duitsland-2022")
+    ?.addEventListener("click", () => {
+      document.startViewTransition(() => {
+        const style = document.createElement("style");
+        // Define your CSS rules
+        const css = `
+          #berlijn-duitsland-2022 {
+            transform: scale(1.25);
+            view-transition-name: photo;
+          }
+
+          @keyframes grow-y {
+            from {
+              transform: scale(1);
+            }
+            to {
+              transform: scale(1.25);
+            }
+          }
+
+          ::view-transition-old(photo),
+          ::view-transition-new(photo) {
+            top: 0;
+          }
+
+          ::view-transition-new(photo) {
+            animation: 1s grow-y;
+          }
+
+      `;
+
+        // Set the CSS text of the <style> element
+        style.textContent = css;
+
+        // Append the <style> element to the document's <head>
+        document.head.appendChild(style);
+      });
+    });
+</script>
 
 <style>
   section {

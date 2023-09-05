@@ -41,7 +41,7 @@ const fallbackImage = `${prefix}/${title}_800px.jpg`;
     object-position: var(--photo-object-position, 50% 50%);
   }
 
-  picture {
+  button {
     grid-area: var(--photo-grid-area);
   }
 </style>
@@ -49,6 +49,6 @@ const fallbackImage = `${prefix}/${title}_800px.jpg`;
   <picture>
     <source type="image/avif" srcset={srcsetAvif} sizes={sizes} />
     <source type="image/jpeg" srcset={srcsetJpeg} sizes={sizes} />
-    <img src={fallbackImage} alt={title} loading={loading} />
+    <img src={fallbackImage} alt={title} loading={loading} id={title} />
   </picture>
 </button>
