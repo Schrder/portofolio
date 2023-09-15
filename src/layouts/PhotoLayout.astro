@@ -1,0 +1,14 @@
+---
+import Photo from "../components/Photo.astro";
+const { frontmatter } = Astro.props;
+---
+
+<div id="mooi">
+  <style>
+    div[id="mooi"] {
+      max-height: 100vh;
+    }
+  </style>
+  <Photo title={frontmatter.title} sizes="100vw" />
+  <p>{frontmatter.description}</p>
+</div>

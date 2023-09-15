@@ -1,92 +1,59 @@
 ---
 import NavigationPage from "../layouts/NavigationPage.astro";
 import Photo from "../components/Photo.astro";
+
+interface Photo {
+  title: string;
+  sizes: string;
+  loading?: "eager" | "lazy";
+}
+const photos: Photo[] = [
+  { sizes: "66vw", title: "berlijn-duitsland-2022" },
+  { sizes: "33vw", title: "funatsu-japan-2017" },
+  { sizes: "33vw", title: "fransum-nederland-2017" },
+  { sizes: "66vw", title: "tanabe-2-japan-2017" },
+  { sizes: "50vw", title: "darelkebdani-marokko-2015" },
+  { sizes: "50vw", title: "jeruzalem-israel-2014" },
+  { sizes: "100vw", title: "amsterdam-2-nederland-2022" },
+  { sizes: "100vw", title: "ardabil-2-iran-2016" },
+  { sizes: "50vw", title: "isfahan-2-iran-2016" },
+  { sizes: "50vw", title: "fujikawaguchiko-japan-2017" },
+  { sizes: "100vw", title: "lissabon-portugal-2023" },
+  { sizes: "66vw", title: "lissabon-portugal-2015" },
+  { sizes: "33vw", title: "tanabe-japan-2017" },
+  { sizes: "33vw", title: "geiranger-2-noorwegen-2022" },
+  { sizes: "100vw", title: "isfahan-3-iran-2016" },
+  { sizes: "75vw", title: "tokyo-japan-2017" },
+  { sizes: "66vw", title: "seoul-korea-2019" },
+  { sizes: "33vw", title: "isfahan-4-iran-2016" },
+  { sizes: "100vw", title: "amsterdam-2-nederland-2017" },
+  { sizes: "100vw", title: "lissabon-2-portugal-2023" },
+  { sizes: "66vw", title: "enna-italie-2022" },
+  { sizes: "33vw", title: "porto-portugal-2015" },
+  { sizes: "75vw", title: "amsterdam-nederland-2017" },
+  { sizes: "33vw", title: "aarhus-denemarken-2023" },
+  { sizes: "33vw", title: "noordpolderzijl-nederland-2017" },
+  { sizes: "66vw", title: "geiranger-noorwegen-2022" },
+  { sizes: "100vw", title: "ardabil-iran-2016" },
+  { sizes: "100vw", title: "isfahan-iran-2016" },
+  { sizes: "100vw", title: "madrid-spanje-2013" },
+  { sizes: "100vw", title: "tokyo-2-japan-2017" },
+];
 ---
 
 <NavigationPage title="tom: fotos">
   <section>
     <div>
-      <Photo
-        title="berlijn-duitsland-2022"
-        sizes="66vw"
-        className="img1"
-        loading="eager"
-      />
-      <Photo
-        title="funatsu-japan-2017"
-        sizes="33vw"
-        className="img2"
-        loading="eager"
-      />
-      <Photo
-        title="fransum-nederland-2017"
-        sizes="33vw"
-        className="img3"
-        oading="eager"
-      />
-      <Photo
-        title="tanabe-2-japan-2017"
-        sizes="66vw"
-        className="img4"
-        loading="eager"
-      />
-      <Photo
-        title="darelkebdani-marokko-2015"
-        sizes="50vw"
-        className="img5"
-        loading="eager"
-      />
-      <Photo
-        title="jeruzalem-israel-2014"
-        sizes="50vw"
-        className="img6"
-        loading="eager"
-      />
-      <Photo
-        title="amsterdam-2-nederland-2022"
-        sizes="100vw"
-        className="img7"
-      />
-      <Photo title="ardabil-2-iran-2016" sizes="100vw" className="img8" />
-      <Photo title="isfahan-2-iran-2016" sizes="50vw" className="img9" />
-      <Photo
-        title="fujikawaguchiko-japan-2017"
-        sizes="50vw"
-        className="img10"
-      />
-      <Photo title="lissabon-portugal-2023" sizes="100vw" className="img11" />
-
-      <Photo title="lissabon-portugal-2015" sizes="66vw" className="img12" />
-      <Photo title="tanabe-japan-2017" sizes="33vw" className="img13" />
-      <Photo
-        title="geiranger-2-noorwegen-2022"
-        sizes="33vw"
-        className="img14"
-      />
-      <Photo title="isfahan-3-iran-2016" sizes="100vw" className="img15" />
-      <Photo title="tokyo-japan-2017" sizes="75vw" className="img16" />
-      <Photo title="seoul-korea-2019" sizes="66vw" className="img17" />
-      <Photo title="isfahan-4-iran-2016" sizes="33vw" className="img18" />
-      <Photo
-        title="amsterdam-2-nederland-2017"
-        sizes="100vw"
-        className="img19"
-      />
-      <Photo title="lissabon-2-portugal-2023" sizes="100vw" className="img20" />
-      <Photo title="enna-italie-2022" sizes="66vw" className="img21" />
-      <Photo title="porto-portugal-2015" sizes="33vw" className="img22" />
-      <Photo title="amsterdam-nederland-2017" sizes="75vw" className="img23" />
-      <Photo title="aarhus-denemarken-2023" sizes="33vw" className="img24" />
-      <Photo
-        title="noordpolderzijl-nederland-2017"
-        sizes="33vw"
-        className="img25"
-      />
-      <Photo title="geiranger-noorwegen-2022" sizes="66vw" className="img26" />
-      <Photo title="ardabil-iran-2016" sizes="100vw" className="img27" />
-      <Photo title="isfahan-iran-2016" sizes="100vw" className="img28" />
-      <Photo title="madrid-spanje-2013" sizes="100vw" className="img29" />
-      <Photo title="tokyo-2-japan-2017" sizes="100vw" className="img30" />
+      {
+        photos.map((photo: Photo, index: number) => (
+          <a
+            href={`fragements/${photo.title}`}
+            style={`--photo-grid-area: img${index + 1}`}
+          >
+            <Photo title={photo.title} sizes={photo.sizes} />
+          </a>
+        ))
+      }
     </div>
   </section>
 </NavigationPage>
@@ -165,99 +132,8 @@ import Photo from "../components/Photo.astro";
       "img30 img30 img30 img30 img30 img30";
     gap: 8px;
   }
-  .img1 {
-    --photo-grid-area: img1;
-  }
-  .img2 {
-    --photo-grid-area: img2;
-    --photo-object-position: 50% 100%;
-  }
-  .img3 {
-    --photo-grid-area: img3;
-    --photo-object-position: 50% 100%;
-  }
-  .img4 {
-    --photo-grid-area: img4;
-  }
-  .img5 {
-    --photo-grid-area: img5;
-  }
-  .img6 {
-    --photo-grid-area: img6;
-  }
-  .img7 {
-    --photo-grid-area: img7;
-  }
-  .img8 {
-    --photo-grid-area: img8;
-  }
-  .img9 {
-    --photo-grid-area: img9;
-  }
-  .img10 {
-    --photo-grid-area: img10;
-  }
-  .img11 {
-    --photo-grid-area: img11;
-  }
-  .img12 {
-    --photo-grid-area: img12;
-  }
-  .img13 {
-    --photo-grid-area: img13;
-  }
-  .img14 {
-    --photo-grid-area: img14;
-  }
-  .img15 {
-    --photo-grid-area: img15;
-  }
-  .img16 {
-    --photo-grid-area: img16;
-  }
-  .img17 {
-    --photo-grid-area: img17;
-  }
-  .img18 {
-    --photo-grid-area: img18;
-  }
-  .img19 {
-    --photo-grid-area: img19;
-  }
-  .img20 {
-    --photo-grid-area: img20;
-  }
-  .img21 {
-    --photo-grid-area: img21;
-  }
-  .img22 {
-    --photo-grid-area: img22;
-  }
-  .img23 {
-    --photo-grid-area: img23;
-  }
-  .img24 {
-    --photo-grid-area: img24;
-  }
-  .img25 {
-    --photo-grid-area: img25;
-  }
-  .img25 {
-    --photo-grid-area: img25;
-  }
-  .img26 {
-    --photo-grid-area: img26;
-  }
-  .img27 {
-    --photo-grid-area: img27;
-  }
-  .img28 {
-    --photo-grid-area: img28;
-  }
-  .img29 {
-    --photo-grid-area: img29;
-  }
-  .img30 {
-    --photo-grid-area: img30;
+
+  a {
+    grid-area: var(--photo-grid-area);
   }
 </style>

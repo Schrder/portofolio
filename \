@@ -2,10 +2,11 @@
 export interface Props {
   title: string;
   sizes: string;
+  styleString: string;
   loading?: string;
 }
 
-const { title, sizes, loading = "lazy" } = Astro.props;
+const { title, sizes, loading = "lazy", styleString } = Astro.props;
 const prefix = "/portofolio/assets";
 const widths = [400, 800, 1200, 1600, 2000, 2400];
 
@@ -39,8 +40,9 @@ const fallbackImage = `${prefix}/${title}_800px.jpg`;
     background-color: var(--variant-2);
     object-position: var(--photo-object-position, 50% 50%);
   }
+
 </style>
-<picture>
+<picture style={styleString}>
   <source type="image/avif" srcset={srcsetAvif} sizes={sizes} />
   <source type="image/jpeg" srcset={srcsetJpeg} sizes={sizes} />
   <img src={fallbackImage} alt={title} loading={loading} id={title} />
