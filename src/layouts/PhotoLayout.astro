@@ -3,13 +3,12 @@ import Photo from "../components/Photo.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<body>
-  <script defer src="https://unpkg.com/htmx.org@1.9.5"></script>
-  <dialog>
-    <Photo title={frontmatter.title} sizes="100vw" />
-    <p>{frontmatter.description}</p>
-  </dialog>
-  <script>
-    document.querySelector("dialog").show();
-  </script>
-</body>
+<div id="mooi">
+  <style>
+    div[id="mooi"] {
+      max-height: 100vh;
+    }
+  </style>
+  <Photo title={frontmatter.title} sizes="100vw" />
+  <p>{frontmatter.description}</p>
+</div>
