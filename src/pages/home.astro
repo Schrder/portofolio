@@ -2,12 +2,12 @@
 import NavigationPage from "../layouts/NavigationPage.astro";
 import Photo from "../components/Photo.astro";
 
-interface Photo {
+interface PhotoLayout {
   title: string;
   sizes: string;
   loading?: "eager" | "lazy";
 }
-const photos: Photo[] = [
+const photos: PhotoLayout[] = [
   { sizes: "66vw", title: "berlijn-duitsland-2022" },
   { sizes: "33vw", title: "funatsu-japan-2017" },
   { sizes: "33vw", title: "fransum-nederland-2017" },
@@ -45,9 +45,9 @@ const photos: Photo[] = [
   <section>
     <div>
       {
-        photos.map((photo: Photo, index: number) => (
+        photos.map((photo: PhotoLayout, index: number) => (
           <a
-            href={`fragements/${photo.title}`}
+            href={`/portofolio/fragements/${photo.title}`}
             style={`--photo-grid-area: img${index + 1}`}
           >
             <Photo title={photo.title} sizes={photo.sizes} />
