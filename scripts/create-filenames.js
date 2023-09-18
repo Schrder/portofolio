@@ -33,7 +33,7 @@ const photoNames = [
   "madrid-spanje-2013",
   "tokyo-2-japan-2017",
 ];
-const prefix = "../src/pages/fragements/";
+const prefix = "../src/pages/fragments/";
 const extension = ".md";
 
 if (!fs.existsSync(prefix)) {

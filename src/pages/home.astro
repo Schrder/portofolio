@@ -1,43 +1,172 @@
 ---
 import NavigationPage from "../layouts/NavigationPage.astro";
 import Photo from "../components/Photo.astro";
+import * as BerlijnDuitsland2022 from "./fragments/berlijn-duitsland-2022.md";
+import * as FunatsuJapan2017 from "./fragments/funatsu-japan-2017.md";
+import * as FransumNederland2017 from "./fragments/fransum-nederland-2017.md";
+import * as Tanabe2Japan2017 from "./fragments/tanabe-2-japan-2017.md";
+import * as DarelkebdaniMarokko2015 from "./fragments/darelkebdani-marokko-2015.md";
+import * as JeruzalemIsrael2014 from "./fragments/jeruzalem-israel-2014.md";
+import * as Amsterdam2Nederland2022 from "./fragments/amsterdam-2-nederland-2022.md";
+import * as Ardabil2Iran2016 from "./fragments/ardabil-2-iran-2016.md";
+import * as Isfahan2Iran2016 from "./fragments/isfahan-2-iran-2016.md";
+import * as FujikawaguchikoJapan2017 from "./fragments/fujikawaguchiko-japan-2017.md";
+import * as LissabonPortugal2023 from "./fragments/lissabon-portugal-2023.md";
+import * as LissabonPortugal2015 from "./fragments/lissabon-portugal-2015.md";
+import * as TanabeJapan2017 from "./fragments/tanabe-japan-2017.md";
+import * as Geiranger2Noorwegen2022 from "./fragments/geiranger-2-noorwegen-2022.md";
+import * as Isfahan3Iran2016 from "./fragments/isfahan-3-iran-2016.md";
+import * as TokyoJapan2017 from "./fragments/tokyo-japan-2017.md";
+import * as SeoulKorea2019 from "./fragments/seoul-korea-2019.md";
+import * as Isfahan4Iran2016 from "./fragments/isfahan-4-iran-2016.md";
+import * as Amsterdam2Nederland2017 from "./fragments/amsterdam-2-nederland-2017.md";
+import * as Lissabon2Portugal2023 from "./fragments/lissabon-2-portugal-2023.md";
+import * as EnnaItalie2022 from "./fragments/enna-italie-2022.md";
+import * as PortoPortugal2015 from "./fragments/porto-portugal-2015.md";
+import * as AmsterdamNederland2017 from "./fragments/amsterdam-nederland-2017.md";
+import * as AarhusDenemarken2023 from "./fragments/aarhus-denemarken-2023.md";
+import * as NoordpolderzijlNederland2017 from "./fragments/noordpolderzijl-nederland-2017.md";
+import * as GeirangerNoorwegen2022 from "./fragments/geiranger-noorwegen-2022.md";
+import * as ArdabilIran2016 from "./fragments/ardabil-iran-2016.md";
+import * as IsfahanIran2016 from "./fragments/isfahan-iran-2016.md";
+import * as MadridSpanje2013 from "./fragments/madrid-spanje-2013.md";
+import * as Tokyo2Japan2017 from "./fragments/tokyo-2-japan-2017.md";
 
 interface PhotoLayout {
   title: string;
   sizes: string;
   loading?: "eager" | "lazy";
 }
+
 const photos: PhotoLayout[] = [
-  { sizes: "66vw", title: "berlijn-duitsland-2022", loading: "eager" },
-  { sizes: "33vw", title: "funatsu-japan-2017", loading: "eager" },
-  { sizes: "33vw", title: "fransum-nederland-2017", loading: "eager" },
-  { sizes: "66vw", title: "tanabe-2-japan-2017", loading: "eager" },
-  { sizes: "50vw", title: "darelkebdani-marokko-2015", loading: "eager" },
-  { sizes: "50vw", title: "jeruzalem-israel-2014", loading: "eager" },
-  { sizes: "100vw", title: "amsterdam-2-nederland-2022", loading: "eager" },
-  { sizes: "100vw", title: "ardabil-2-iran-2016", loading: "eager" },
-  { sizes: "50vw", title: "isfahan-2-iran-2016" },
-  { sizes: "50vw", title: "fujikawaguchiko-japan-2017" },
-  { sizes: "100vw", title: "lissabon-portugal-2023" },
-  { sizes: "66vw", title: "lissabon-portugal-2015" },
-  { sizes: "33vw", title: "tanabe-japan-2017" },
-  { sizes: "33vw", title: "geiranger-2-noorwegen-2022" },
-  { sizes: "100vw", title: "isfahan-3-iran-2016" },
-  { sizes: "75vw", title: "tokyo-japan-2017" },
-  { sizes: "66vw", title: "seoul-korea-2019" },
-  { sizes: "33vw", title: "isfahan-4-iran-2016" },
-  { sizes: "100vw", title: "amsterdam-2-nederland-2017" },
-  { sizes: "100vw", title: "lissabon-2-portugal-2023" },
-  { sizes: "66vw", title: "enna-italie-2022" },
-  { sizes: "33vw", title: "porto-portugal-2015" },
-  { sizes: "75vw", title: "amsterdam-nederland-2017" },
-  { sizes: "33vw", title: "aarhus-denemarken-2023" },
-  { sizes: "33vw", title: "noordpolderzijl-nederland-2017" },
-  { sizes: "66vw", title: "geiranger-noorwegen-2022" },
-  { sizes: "100vw", title: "ardabil-iran-2016" },
-  { sizes: "100vw", title: "isfahan-iran-2016" },
-  { sizes: "100vw", title: "madrid-spanje-2013" },
-  { sizes: "100vw", title: "tokyo-2-japan-2017" },
+  {
+    sizes: "66vw",
+    title: BerlijnDuitsland2022.frontmatter.title,
+    loading: "eager",
+  },
+  {
+    sizes: "33vw",
+    title: FunatsuJapan2017.frontmatter.title,
+    loading: "eager",
+  },
+  {
+    sizes: "33vw",
+    title: FransumNederland2017.frontmatter.title,
+    loading: "eager",
+  },
+  {
+    sizes: "66vw",
+    title: Tanabe2Japan2017.frontmatter.title,
+    loading: "eager",
+  },
+  {
+    sizes: "50vw",
+    title: DarelkebdaniMarokko2015.frontmatter.title,
+    loading: "eager",
+  },
+  {
+    sizes: "50vw",
+    title: JeruzalemIsrael2014.frontmatter.title,
+    loading: "eager",
+  },
+  {
+    sizes: "100vw",
+    title: Amsterdam2Nederland2022.frontmatter.title,
+    loading: "eager",
+  },
+  {
+    sizes: "100vw",
+    title: Ardabil2Iran2016.frontmatter.title,
+    loading: "eager",
+  },
+  {
+    sizes: "50vw",
+    title: Isfahan2Iran2016.frontmatter.title,
+  },
+  {
+    sizes: "50vw",
+    title: FujikawaguchikoJapan2017.frontmatter.title,
+  },
+  {
+    sizes: "100vw",
+    title: LissabonPortugal2023.frontmatter.title,
+  },
+  {
+    sizes: "66vw",
+    title: LissabonPortugal2015.frontmatter.title,
+  },
+  {
+    sizes: "33vw",
+    title: TanabeJapan2017.frontmatter.title,
+  },
+  {
+    sizes: "33vw",
+    title: Geiranger2Noorwegen2022.frontmatter.title,
+  },
+  {
+    sizes: "100vw",
+    title: Isfahan3Iran2016.frontmatter.title,
+  },
+  {
+    sizes: "75vw",
+    title: TokyoJapan2017.frontmatter.title,
+  },
+  {
+    sizes: "66vw",
+    title: SeoulKorea2019.frontmatter.title,
+  },
+  {
+    sizes: "33vw",
+    title: Isfahan4Iran2016.frontmatter.title,
+  },
+  {
+    sizes: "100vw",
+    title: Amsterdam2Nederland2017.frontmatter.title,
+  },
+  {
+    sizes: "100vw",
+    title: Lissabon2Portugal2023.frontmatter.title,
+  },
+  {
+    sizes: "66vw",
+    title: EnnaItalie2022.frontmatter.title,
+  },
+  {
+    sizes: "33vw",
+    title: PortoPortugal2015.frontmatter.title,
+  },
+  {
+    sizes: "75vw",
+    title: AmsterdamNederland2017.frontmatter.title,
+  },
+  {
+    sizes: "33vw",
+    title: AarhusDenemarken2023.frontmatter.title,
+  },
+  {
+    sizes: "33vw",
+    title: NoordpolderzijlNederland2017.frontmatter.title,
+  },
+  {
+    sizes: "66vw",
+    title: GeirangerNoorwegen2022.frontmatter.title,
+  },
+  {
+    sizes: "100vw",
+    title: ArdabilIran2016.frontmatter.title,
+  },
+  {
+    sizes: "100vw",
+    title: IsfahanIran2016.frontmatter.title,
+  },
+  {
+    sizes: "100vw",
+    title: MadridSpanje2013.frontmatter.title,
+  },
+  {
+    sizes: "100vw",
+    title: Tokyo2Japan2017.frontmatter.title,
+  },
 ];
 ---
 
@@ -47,7 +176,7 @@ const photos: PhotoLayout[] = [
       {
         photos.map((photo: PhotoLayout, index: number) => (
           <a
-            href={`${import.meta.env.BASE_URL}fragements/${photo.title}`}
+            href={`${import.meta.env.BASE_URL}fragments/${photo.title}`}
             style={`--photo-grid-area: img${index + 1}`}
           >
             <Photo title={photo.title} sizes={photo.sizes} />
