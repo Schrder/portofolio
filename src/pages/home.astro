@@ -31,10 +31,12 @@ import * as ArdabilIran2016 from "./fragments/ardabil-iran-2016.md";
 import * as IsfahanIran2016 from "./fragments/isfahan-iran-2016.md";
 import * as MadridSpanje2013 from "./fragments/madrid-spanje-2013.md";
 import * as Tokyo2Japan2017 from "./fragments/tokyo-2-japan-2017.md";
+
 interface PhotoLayout {
   title: string;
   sizes: string;
   loading?: "eager" | "lazy";
+  objectPosition?: string;
 }
 
 const photos: PhotoLayout[] = [
@@ -47,6 +49,7 @@ const photos: PhotoLayout[] = [
     sizes: "33vw",
     title: FunatsuJapan2017.frontmatter.title,
     loading: "eager",
+    objectPosition: "center 100%",
   },
   {
     sizes: "33vw",
@@ -176,7 +179,11 @@ const photos: PhotoLayout[] = [
         photos.map((photo: PhotoLayout, index: number) => (
           <a
             href={`${import.meta.env.BASE_URL}fragments/${photo.title}`}
-            style={`--photo-grid-area: img${index + 1}`}
+            style={`--photo-grid-area: img${index + 1}; ${
+              photo.objectPosition
+                ? `--photo-object-position: ${photo.objectPosition}`
+                : ""
+            }`}
           >
             <Photo
               title={photo.title}
