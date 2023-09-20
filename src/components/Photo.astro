@@ -6,8 +6,8 @@ export interface Props {
   loading?: string;
 }
 
-const { title, sizes, className, loading = "lazy" } = Astro.props;
-const prefix = "/portofolio/assets";
+const { title, sizes, loading = "lazy", className } = Astro.props;
+const prefix = `${import.meta.env.BASE_URL}assets`;
 const widths = [400, 800, 1200, 1600, 2000, 2400];
 
 let srcsetAvif = "";
@@ -33,6 +33,7 @@ const fallbackImage = `${prefix}/${title}_800px.jpg`;
     object-fit: cover;
 
     /* Reset initistic image widths for css grid */
+    /* Remove intrinsice widths of replacement element */
     min-width: 0;
     min-height: 0;
 
@@ -40,13 +41,9 @@ const fallbackImage = `${prefix}/${title}_800px.jpg`;
     background-color: var(--variant-2);
     object-position: var(--photo-object-position, 50% 50%);
   }
-
-  picture {
-    grid-area: var(--photo-grid-area);
-  }
 </style>
 <picture class={className}>
   <source type="image/avif" srcset={srcsetAvif} sizes={sizes} />
   <source type="image/jpeg" srcset={srcsetJpeg} sizes={sizes} />
-  <img src={fallbackImage} alt={title} loading={loading} />
+  <img src={fallbackImage} alt={title} loading={loading} id={title} />
 </picture>
