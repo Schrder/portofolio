@@ -2,6 +2,6 @@
 
     layout: ../../layouts/PhotoLayout.astro
     title: geiranger-noorwegen-2022
-    description:
+    description: Geiranger, Noorwegen (2022)
 
 ---
