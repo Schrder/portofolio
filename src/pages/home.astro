@@ -37,6 +37,7 @@ interface PhotoLayout {
   sizes: string;
   loading?: "eager" | "lazy";
   objectPosition?: string;
+  media?: string;
 }
 
 const photos: PhotoLayout[] = [
@@ -186,8 +187,11 @@ const photos: PhotoLayout[] = [
             }`}
           >
             <Photo
-              title={photo.title}
-              sizes={photo.sizes}
+              images={[{
+                title: photo.title,
+                sizes: photo.sizes,
+                media: photo.media,
+              }]}
               loading={photo.loading}
             />
           </a>
