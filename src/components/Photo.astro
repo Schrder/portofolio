@@ -2,7 +2,7 @@
 // The abstraction is leaking here, because the order of the images is important
 // the consumer shouldn't have to care in which order the images are passed
 // maybe it is fair to say I am not making an abstraction for the picture element
-// but I am making an abstraction for the duplicate code
+// but I am making an abstraction for the duplicate code and the srcset generation
 interface ImageMetadata {
   title: string;
   sizes?: string;
@@ -61,7 +61,7 @@ const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
           sizes={sizes}
         />
         <source
-          type="jpeg"
+          type="image/jpeg"
           media={media}
           srcset={generateSrcset(title, "jpeg")}
           sizes={sizes}
