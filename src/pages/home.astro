@@ -179,18 +179,20 @@ const photos: PhotoLayout[] = [
       {
         photos.map((photo: PhotoLayout, index: number) => (
           <a
-            href={`${import.meta.env.BASE_URL}fragments/${photo.title}`}
+            href={`${import.meta.env.BASE_URL}/fragments/${photo.title}`}
             style={{
-    '--photo-grid-area': `img${index + 1}`,
-    '--photo-object-position': photo.objectPosition || '',
-  }}
+              "--photo-grid-area": `img${index + 1}`,
+              "--photo-object-position": photo.objectPosition || "",
+            }}
           >
             <Photo
-              images={[{
-                title: photo.title,
-                sizes: photo.sizes,
-                media: photo.media,
-              }]}
+              images={[
+                {
+                  title: photo.title,
+                  sizes: photo.sizes,
+                  media: photo.media,
+                },
+              ]}
               loading={photo.loading}
             />
           </a>
