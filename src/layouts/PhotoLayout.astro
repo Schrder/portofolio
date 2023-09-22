@@ -1,14 +1,12 @@
 ---
 import Photo from "../components/Photo.astro";
+import NavigationPage from "./NavigationPage.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<div id="mooi">
-  <style>
-    div[id="mooi"] {
-      max-height: 100vh;
-    }
-  </style>
-  <Photo images={[{ title: frontmatter.title }]} />
-  <p>{frontmatter.description}</p>
-</div>
+<NavigationPage title={frontmatter.title} >
+  <section id="detail-page">
+    <h1>{frontmatter.description}</h1>
+    <Photo images={[{ title: frontmatter.title }]} />
+  </section>
+</NavigationPage>
