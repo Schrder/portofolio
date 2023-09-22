@@ -5,9 +5,15 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(`${import.meta.env.BASE_URL}/assets/${title}_800px.jpeg`, Astro.url);
 ---
 
 <Layout title={title}>
+  <meta property="og:title" content={title} />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content={socialImageURL} />
+  <meta property="og:url" content={canonicalURL} />
   <main>
     <nav>
       <a href="/portofolio/"> <img src="/portofolio/logo.png" alt="logo" /></a>
