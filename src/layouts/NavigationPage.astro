@@ -1,19 +1,21 @@
 ---
 import Layout from "./Layout.astro";
+
 export interface Props {
   title: string;
+  socialImageTitle?: string;
 }
 
-const { title } = Astro.props;
+const { title, socialImageTitle = title } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(`${import.meta.env.BASE_URL}/assets/${title}_800px.jpeg`, Astro.url);
+const socialImageURL = new URL(`${import.meta.env.BASE_URL}/assets/${socialImageTitle}_800px.jpg`, Astro.url);
 ---
 
 <Layout title={title}>
-  <meta property="og:title" content={title} />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content={socialImageURL} />
-  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} slot="head" />
+  <meta property="og:type" content="website" slot="head" />
+  <meta property="og:url" content={canonicalURL} slot="head" />
+  <meta property="og:image" content={socialImageURL} slot="head" />
   <main>
     <nav>
       <a href="/portofolio/"> <img src="/portofolio/logo.png" alt="logo" /></a>
