@@ -16,6 +16,7 @@ const socialImageURL = new URL(`${import.meta.env.BASE_URL}/assets/${socialImage
   <meta property="og:type" content="website" slot="head" />
   <meta property="og:url" content={canonicalURL} slot="head" />
   <meta property="og:image" content={socialImageURL} slot="head" />
+  <script src="https://unpkg.com/htmx.org@1.9.5" integrity="sha384-xcuj3WpfgjlKF+FXhSQFQ0ZNr39ln+hwjN3npfM9VBnUskLolQAcN80McRIVOPuO" crossorigin="anonymous"></script>
   <main>
     <nav>
       <a href="/portofolio/"> <img src="/portofolio/logo.png" alt="logo" /></a>
@@ -42,7 +43,7 @@ const socialImageURL = new URL(`${import.meta.env.BASE_URL}/assets/${socialImage
     row-gap: 24px;
   }
 
-  section {
+  main > section {
     max-width: 1600px;
     margin-inline: auto;
     padding-inline: 2vw;

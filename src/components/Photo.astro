@@ -41,7 +41,7 @@ const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: var(--photo-object-fit, cover);
 
     /* Remove intrinsice widths of replacement element */
     min-width: 0;

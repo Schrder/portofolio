@@ -3,12 +3,27 @@ import Photo from "../components/Photo.astro";
 import NavigationPage from "./NavigationPage.astro";
 const { frontmatter } = Astro.props;
 const title = frontmatter.title;
-
 ---
 
 <NavigationPage title={title} >
-  <section id="detail-page">
-    <h1>{frontmatter.description}</h1>
-    <Photo images={[{ title }]} animate={true} />
-  </section>
+  <dialog>
+    <section id="detail-page">
+      <h1>{frontmatter.description}</h1>
+      <Photo images={[{ title }]} />
+    </section>
+    <script is:inline>
+      document.querySelector("dialog").show();
+    </script>
+    <style is:inline>
+      section[id="detail-page"] {
+        height: 100vh;
+        height: 100lvh;
+        --photo-object-fit: contain;
+      }
+      
+      section[id="detail-page"] img {
+        view-transition-name: dialog;
+      }
+    </style>
+  </dialog>
 </NavigationPage>
