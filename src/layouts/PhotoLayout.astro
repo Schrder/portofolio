@@ -9,6 +9,6 @@ const { frontmatter } = Astro.props;
       max-height: 100vh;
     }
   </style>
-  <Photo title={frontmatter.title} sizes="100vw" />
+  <Photo images={[{ title: frontmatter.title }]} />
   <p>{frontmatter.description}</p>
 </div>
