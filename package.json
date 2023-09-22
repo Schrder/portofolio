@@ -11,6 +11,6 @@
     "convert-originals": "node ./scripts/convert-original-images.js"
   },
   "dependencies": {
-    "astro": "^2.3.0"
+    "astro": "^3.1.2"
   }
 }
