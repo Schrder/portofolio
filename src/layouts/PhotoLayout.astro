@@ -4,17 +4,11 @@ import NavigationPage from "./NavigationPage.astro";
 const { frontmatter } = Astro.props;
 const title = frontmatter.title;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(`${import.meta.env.BASE_URL}/assets/${title}_800px.jpeg`, Astro.url);
 ---
 
 <NavigationPage title={title} >
-  <meta property="og:title" content={title} slot="head" />
-  <meta property="og:image" content={socialImageURL} slot="head" />
-  <meta property="og:url" content={canonicalURL} slot="head" />
-
   <section id="detail-page">
     <h1>{frontmatter.description}</h1>
-    <Photo images={[{ title }]} />
+    <Photo images={[{ title }]} animate={true} />
   </section>
 </NavigationPage>
