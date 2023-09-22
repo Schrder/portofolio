@@ -3,13 +3,14 @@
 // the consumer shouldn't have to care in which order the images are passed
 // maybe it is fair to say I am not making an abstraction for the picture element
 // but I am making an abstraction for the duplicate code and the srcset generation
+
 interface ImageMetadata {
   title: string;
   sizes?: string;
   media?: string;
 }
 
-export interface Props {
+interface Props {
   className?: string;
   loading?: "eager" | "lazy";
   images: ImageMetadata[];
@@ -52,7 +53,7 @@ const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
 </style>
 <picture class={className}>
   {
-    images?.map(({ title, sizes = "100vw", media }: ImageMetadata) => (
+    images?.map(({ title, media, sizes = "100vw" }: ImageMetadata) => (
       <>
         <source
           type="image/avif"
