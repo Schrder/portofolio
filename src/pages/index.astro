@@ -1,11 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Photo from "../components/Photo.astro";
+
+const images = [
+  { title: "tanabe-2-2-japan-2017", media: "(max-width: 768px)" },
+  { title: "tanabe-japan-2017" },
+];
 ---
 
 <Layout title="tom: introductie">
   <main>
-    <Photo title="tanabe-japan-2017" className="main-img" />
+    <Photo images={images} className="main-img" />
     <div>
       <h1>tom van der bijl<span>l</span></h1>
       <h2>fotograaf-photographer</h2>
@@ -28,7 +33,7 @@ import Photo from "../components/Photo.astro";
     grid-column: 1;
   }
 
-  main .main-img {
+  .main-img {
     grid-row: 1/5;
   }
 

@@ -1,29 +1,40 @@
 ---
-export interface Props {
+// The abstraction is leaking here, because the order of the images is important
+// the consumer shouldn't have to care in which order the images are passed
+// maybe it is fair to say I am not making an abstraction for the picture element
+// but I am making an abstraction for the duplicate code and the srcset generation
+
+interface ImageMetadata {
   title: string;
-  sizes: string;
-  className: string;
-  loading?: "eager" | "lazy";
+  sizes?: string;
+  media?: string;
 }
 
-const { title, sizes, loading = "lazy", className } = Astro.props;
-const prefix = `${import.meta.env.BASE_URL}assets`;
+interface Props {
+  animate?: boolean;
+  className?: string;
+  loading?: "eager" | "lazy";
+  images: ImageMetadata[];
+}
+
+const { animate = false, loading = "lazy", className, images } = Astro.props;
+const prefix = `${import.meta.env.BASE_URL}/assets`;
 const widths = [400, 800, 1200, 1600, 2000, 2400];
 
-let srcsetAvif = "";
-let srcsetJpeg = "";
+const generateSrcset = (title: string, filetype: "jpeg" | "avif"): string => {
+  let srcset = "";
+  widths.forEach((width) => {
+    const variationName = `${prefix}/${title}_${width}px`;
+    srcset += `${variationName}.${filetype} ${width}w`;
+    if (width !== widths[widths.length - 1]) {
+      srcset += ",";
+    }
+  });
 
-widths.forEach((width) => {
-  const variationName = `${prefix}/${title}_${width}px`;
-  srcsetAvif += `${variationName}.avif ${width}w`;
-  srcsetJpeg += `${variationName}.jpeg ${width}w`;
-  if (width !== widths[widths.length - 1]) {
-    srcsetAvif += ",";
-    srcsetJpeg += ",";
-  }
-});
+  return srcset;
+};
 
-const fallbackImage = `${prefix}/${title}_800px.jpg`;
+const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
 ---
 
 <style>
@@ -32,7 +43,6 @@ const fallbackImage = `${prefix}/${title}_800px.jpg`;
     height: 100%;
     object-fit: cover;
 
-    /* Reset initistic image widths for css grid */
     /* Remove intrinsice widths of replacement element */
     min-width: 0;
     min-height: 0;
@@ -41,9 +51,47 @@ const fallbackImage = `${prefix}/${title}_800px.jpg`;
     background-color: var(--variant-2);
     object-position: var(--photo-object-position, 50% 50%);
   }
+
+  img[data-animate] {
+    opacity: 0; /* Initially hide the image */
+    transition: opacity 0.3s ease-in; /* Add a transition effect for opacity */
+  }
+
+  img[data-animate].loaded {
+    opacity: 1; /* Show the image when it's loaded */
+  }
 </style>
+<script>
+  const imgElement = document.querySelector('picture > img[data-animate]');
+
+  imgElement?.addEventListener('load', () => {
+      imgElement.classList.add('loaded'); 
+  });
+</script>
 <picture class={className}>
-  <source type="image/avif" srcset={srcsetAvif} sizes={sizes} />
-  <source type="image/jpeg" srcset={srcsetJpeg} sizes={sizes} />
-  <img src={fallbackImage} alt={title} loading={loading} id={title} />
+  {
+    images?.map(({ title, media, sizes = "100vw" }: ImageMetadata) => (
+      <>
+        <source
+          type="image/avif"
+          media={media}
+          srcset={generateSrcset(title, "avif")}
+          sizes={sizes}
+        />
+        <source
+          type="image/jpeg"
+          media={media}
+          srcset={generateSrcset(title, "jpeg")}
+          sizes={sizes}
+        />
+      </>
+    ))
+  }
+  <img
+    src={fallbackImage}
+    alt={images[0].title}
+    loading={loading}
+    id={images[0].title}
+    data-animate={animate}
+  />
 </picture>
