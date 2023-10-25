@@ -3,7 +3,7 @@ export interface Props {
   title: string;
   sizes: string;
   className: string;
-  loading?: string;
+  loading?: "eager" | "lazy";
 }
 
 const { title, sizes, loading = "lazy", className } = Astro.props;
