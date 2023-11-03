@@ -4,5 +4,5 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   site: "https://schrder.github.io",
   base: "/portofolio",
-  scopedStyleStrategy: "where"
+  scopedStyleStrategy: "where",
 });

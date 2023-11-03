@@ -2,25 +2,49 @@
 import NavigationPage from "../layouts/NavigationPage.astro";
 ---
 
-<NavigationPage title="about">
+<NavigationPage title="bio">
   <main>
-    <h1>About</h1>
-
-    <p>Tom van der Bijll (1993), opgeleid als cultureel antropoloog-socioloog, fotografeert vanaf zijn vijftiende,
-      toen nog met een geleende camera. Richt zich met name op straatfotografie, zowel analoog als digitaal.<p>
-
-    <p>Tom van der Bijll (1993), has a background in cultural anthropology and sociology. He has been photographing
-      since he was fifteen years old, back then with a borrowed camera. He mainly focuses on street photography,
-      both analogue and digital.</p>
-        
-      </p>Contact via e-mail: info@tomvanderbijll.com</p>
+    <h1>Bio</h1>
+    <div>
+      <div>
+      <h2>EN</h2>
+      <p>
+        Tom van der Bijll (1993), has a background in cultural anthropology and sociology. He has been photographing
+        since he was fifteen years old, back then with a borrowed camera. He mainly focuses on street photography,
+        both analogue and digital.
+      </p>
+      </div>
+      <div>
+      <h2>NL</h2>
+      <p>
+        Tom van der Bijll (1993), opgeleid als cultureel antropoloog-socioloog, fotografeert vanaf zijn vijftiende,
+        toen nog met een geleende camera. Richt zich met name op straatfotografie, zowel analoog als digitaal.
+      </p>
+      </div>
+    </div>   
   </main>
 </NavigationPage>
 
 <style>
   h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-block-start: 0;
   }
+  h2 {
+    margin: 0;
+    font-weight: 300;
+    }
+  main {
+    max-width: 120ch;
+    margin-inline: auto;
+    padding-inline: 1rem;
+    }
+
+    main > div {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      column-gap: 6rem;
+      row-gap: 1rem;
+    }
 </style>
