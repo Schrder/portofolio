@@ -16,7 +16,7 @@ const imageUrl = `${import.meta.env.BASE_URL}/assets/bio-foto_2400px.avif`;
       <p>For information and prints contact via: info@tomvanderbijll.com</p>
     </div>
 
-    <img src={imageUrl} width="300" height="300" />
+    <img src={imageUrl} width="400" height="400" />
     <div>
       <h2>NL</h2>
       <p>
@@ -40,7 +40,7 @@ const imageUrl = `${import.meta.env.BASE_URL}/assets/bio-foto_2400px.avif`;
   }
 
   section {
-    max-width: 100ch;
+    max-width: 110ch;
     margin-inline: auto;
     padding-inline: 1rem;
   }
@@ -59,6 +59,7 @@ const imageUrl = `${import.meta.env.BASE_URL}/assets/bio-foto_2400px.avif`;
     clip-path: circle();
 
     margin-inline: auto;
+    background-color: lightgray;
   }
 
   section > div:last-of-type {
@@ -70,7 +71,7 @@ const imageUrl = `${import.meta.env.BASE_URL}/assets/bio-foto_2400px.avif`;
     section {
       display: grid;
       grid-template-columns: 1fr min-content 1fr;
-      grid-template-rows: 120px;
+      grid-template-rows: 180px;
       column-gap: 2rlh;
     }
 
