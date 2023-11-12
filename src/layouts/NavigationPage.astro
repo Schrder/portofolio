@@ -8,7 +8,10 @@ export interface Props {
 
 const { title, socialImageTitle = title } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(`${import.meta.env.BASE_URL}/assets/${socialImageTitle}_800px.jpg`, Astro.url);
+const socialImageURL = new URL(
+  `${import.meta.env.BASE_URL}/assets/${socialImageTitle}_800px.jpg`,
+  Astro.url,
+);
 ---
 
 <Layout title={title}>
@@ -38,7 +41,7 @@ const socialImageURL = new URL(`${import.meta.env.BASE_URL}/assets/${socialImage
   main {
     display: grid;
     grid-template-rows: 54px 1fr;
-    row-gap: 24px;
+    row-gap: var(--main-row-gap, 24px);
   }
 
   section {
