@@ -44,7 +44,7 @@ interface TextLayout {
   text: string;
 }
 
-const objects: (PhotoLayout | TextLayout)[] = [
+const items: (PhotoLayout | TextLayout)[] = [
   {
     sizes: "66vw",
     title: BerlijnDuitsland2022.frontmatter.title,
@@ -86,9 +86,7 @@ const objects: (PhotoLayout | TextLayout)[] = [
     title: Ardabil2Iran2016.frontmatter.title,
     loading: "eager",
   },
-  {
-    text: "Tom van der Bijll (1993), opgeleid als cultureel antropoloog-socioloog",
-  },
+  { text: "Tom van der bijll" },
   {
     sizes: "50vw",
     title: Isfahan3Iran2016.frontmatter.title,
@@ -184,32 +182,33 @@ const objects: (PhotoLayout | TextLayout)[] = [
   <section>
     <div>
       {
-        objects.map((object: TextLayout | PhotoLayout, index: number) => {
-          const tg = (tbd: any): tbd is PhotoLayout => {
-              return !!tbd.title;
-          }
+        items.map((item: PhotoLayout | TextLayout, index: number) => {
+          if ((item as PhotoLayout).title) {
+            const photo = item as PhotoLayout;
 
-          if (tg(object)) { 
-            return <a
-              href={`${import.meta.env.BASE_URL}/fragments/${object.title}`}
-              style={{
-                "--object-grid-area": `img${index + 1}`,
-                "--object-object-position": object.objectPosition || "",
-              }}
-              title={object.title}
-            >
-              <Photo
-                images={[
-                  {
-                    title: object.title,
-                    sizes: object.sizes,
-                    media: object.media,
-                  },
-                ]}
-                loading={object.loading}
-              />
-            </a>
-          };
+            return (
+              <a
+                href={`${import.meta.env.BASE_URL}/fragments/${photo.title}`}
+                style={{
+                  "--photo-grid-area": `img${index + 1}`,
+                  "--photo-object-position": photo.objectPosition || "",
+                }}
+              >
+                <Photo
+                  images={[
+                    {
+                      title: photo.title,
+                      sizes: photo.sizes,
+                      media: photo.media,
+                    },
+                  ]}
+                  loading={photo.loading}
+                />
+              </a>
+            );
+          } else {
+            <div>{(item as TextLayout).text}</div>;
+          }
         })
       }
     </div>
@@ -244,32 +243,37 @@ const objects: (PhotoLayout | TextLayout)[] = [
       "img9 img9 img9 img10 img10 img10"
       "img9 img9 img9 img10 img10 img10"
       "img9 img9 img9 img10 img10 img10"
-      "txt11 txt11 txt11 txt11 txt11 txt11"
-      "img12 img12 img12 img12 img12 img12"
-      "img12 img12 img12 img12 img12 img12"
-      "img12 img12 img12 img12 img12 img12"
-      "img13 img13 img13 img13 img14 img14"
-      "img13 img13 img13 img13 img15 img15"
-      "img16 img16 img16 img16 img16 img16"
-      "img16 img16 img16 img16 img16 img16"
-      "img16 img16 img16 img16 img16 img16"
-      ". img17 img17 img17 img17 ."
-      ". img17 img17 img17 img17 ."
-      ". img17 img17 img17 img17 ."
-      ". img17 img17 img17 img17 ."
-      "img18 img18 img18 img18 img19 img19"
-      "img18 img18 img18 img18 img19 img19"
+      "img11 img11 img11 img11 img11 img11"
+      "img11 img11 img11 img11 img11 img11"
+      "img11 img11 img11 img11 img11 img11"
+      "img12 img12 img12 img12 img13 img13"
+      "img12 img12 img12 img12 img14 img14"
+      "img15 img15 img15 img15 img15 img15"
+      "img15 img15 img15 img15 img15 img15"
+      "img15 img15 img15 img15 img15 img15"
+      ". img16 img16 img16 img16 ."
+      ". img16 img16 img16 img16 ."
+      ". img16 img16 img16 img16 ."
+      ". img16 img16 img16 img16 ."
+      "img17 img17 img17 img17 img18 img18"
+      "img17 img17 img17 img17 img18 img18"
+      "img19 img19 img19 img19 img19 img19"
+      "img19 img19 img19 img19 img19 img19"
+      "img19 img19 img19 img19 img19 img19"
       "img20 img20 img20 img20 img20 img20"
       "img20 img20 img20 img20 img20 img20"
       "img20 img20 img20 img20 img20 img20"
-      "img21 img21 img21 img21 img23 img23"
-      "img21 img21 img21 img21 img23 img23"
-      ". img24 img24 img24 img24 ."
-      ". img24 img24 img24 img24 ."
-      ". img24 img24 img24 img24 ."
-      ". img24 img24 img24 img24 ."
-      "img25 img25 img27 img27 img27 img27"
-      "img26 img26 img27 img27 img27 img27"
+      "img21 img21 img21 img21 img22 img22"
+      "img21 img21 img21 img21 img22 img22"
+      ". img23 img23 img23 img23 ."
+      ". img23 img23 img23 img23 ."
+      ". img23 img23 img23 img23 ."
+      ". img23 img23 img23 img23 ."
+      "img24 img24 img26 img26 img26 img26"
+      "img25 img25 img26 img26 img26 img26"
+      "img27 img27 img27 img27 img27 img27"
+      "img27 img27 img27 img27 img27 img27"
+      "img27 img27 img27 img27 img27 img27"
       "img28 img28 img28 img28 img28 img28"
       "img28 img28 img28 img28 img28 img28"
       "img28 img28 img28 img28 img28 img28"
