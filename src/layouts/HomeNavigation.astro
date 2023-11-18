@@ -1,46 +1,17 @@
----
-import { ViewTransitions } from "astro:transitions";
-import Layout from "./Layout.astro";
-
-export interface Props {
-  title: string;
-  socialImageTitle?: string;
-}
-
-const { title, socialImageTitle = title } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(
-  `${import.meta.env.BASE_URL}/assets/${socialImageTitle}_800px.jpg`,
-  Astro.url,
-);
----
-
-<Layout title={title}>
-  <meta property="og:title" content={title} slot="head" />
-  <meta property="og:type" content="website" slot="head" />
-  <meta property="og:url" content={canonicalURL} slot="head" />
-  <meta property="og:image" content={socialImageURL} slot="head" />
-  <ViewTransitions fallback="none" />
-  <main>
-    <nav>
-      <button> <img src="/portofolio/logo.png" alt="logo" /></button>
-      <!-- TODO: make title into component and reuse it here and in the index -->
-      <h2>
-        <button>tom van der bijl<span>l</span></button>
-      </h2>
-      <div>
-        <a href="/portofolio/contact">contact</a>
-        <!-- TODO: place correct href when instagram is ready -->
-        <!--        <a href="https://instagram.com"
+<nav>
+  <button> <img src="/portofolio/logo.png" alt="logo" /></button>
+  <!-- TODO: make title into component and reuse it here and in the index -->
+  <h2>
+    <button>tom van der bijl<span>l</span></button>
+  </h2>
+  <div>
+    <a href="/portofolio/contact">contact</a>
+    <!-- TODO: place correct href when instagram is ready -->
+    <!--        <a href="https://instagram.com"
           ><img src="/portofolio/assets/instagram-logo.svg" /></a
         > -->
-      </div>
-    </nav>
-    <section>
-      <slot />
-    </section>
-  </main>
-</Layout>
+  </div>
+</nav>
 <script is:inline>
   document
     .querySelector("nav > button:first-of-type")
@@ -56,13 +27,6 @@ const socialImageURL = new URL(
   });
 </script>
 <style>
-  section {
-    max-width: 1600px;
-    margin-inline: auto;
-    padding-inline: 2vw;
-    width: 96vw;
-  }
-
   nav {
     border-block-end: 1px solid black;
     position: sticky;

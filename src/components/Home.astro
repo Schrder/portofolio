@@ -1,5 +1,5 @@
 ---
-import NavigationPage from "../layouts/NavigationPage.astro";
+import HomeNavigation from "../layouts/HomeNavigation.astro";
 import Photo from "./Photo.astro";
 import * as BerlijnDuitsland2022 from "../pages/fragments/berlijn-duitsland-2022.md";
 import * as FunatsuJapan2017 from "../pages/fragments/funatsu-japan-2017.md";
@@ -189,7 +189,8 @@ const items: (PhotoLayout | TextLayout)[] = [
 ];
 ---
 
-<NavigationPage title="tom: fotos" socialImageTitle="tanabe-japan-2017">
+<main>
+  <HomeNavigation />
   <section>
     <div>
       {
@@ -228,8 +229,7 @@ const items: (PhotoLayout | TextLayout)[] = [
       }
     </div>
   </section>
-</NavigationPage>
-
+</main>
 <style>
   section {
     container-type: inline-size;
@@ -318,8 +318,8 @@ const items: (PhotoLayout | TextLayout)[] = [
 
   span {
     text-align: center;
-    font-size: 6vw;
-    font-size: 6cqw;
+    font-size: 5vw;
+    font-size: 5cqw;
     font-weight: 100;
   }
 </style>

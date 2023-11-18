@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { ViewTransitions } from "astro:transitions";
 import Nav from "../components/Nav.astro";
 const imageUrl = `${import.meta.env.BASE_URL}/assets/bio-foto_2400px.avif`;
 
@@ -22,7 +21,6 @@ const socialImageURL = new URL(
   <meta property="og:type" content="website" slot="head" />
   <meta property="og:url" content={canonicalURL} slot="head" />
   <meta property="og:image" content={socialImageURL} slot="head" />
-  <ViewTransitions fallback="none" />
   <main>
     <Nav />
     <section>

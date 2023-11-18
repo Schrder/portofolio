@@ -66,7 +66,7 @@ const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
     min-width: 0;
     min-height: 0;
 
-    border-radius: 8px;
+    border-radius: var(--photo-border-radius, 8px);
     background-color: var(--variant-2);
     object-position: var(--photo-object-position, 50% 50%);
     aspect-ratio: var(--photo-aspect-ratio);
