@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 const imageUrl = `${import.meta.env.BASE_URL}/assets/bio-foto_2400px.avif`;
 
@@ -47,9 +48,14 @@ const socialImageURL = new URL(
         <p>Voor informatie en fotoprints: info@tomvanderbijll.com</p>
       </div>
     </section>
+    <Footer />
   </main>
 </Layout>
 <style>
+  main {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
   section h2 {
     margin: 0;
     font-weight: 300;

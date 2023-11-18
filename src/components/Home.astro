@@ -1,6 +1,7 @@
 ---
 import HomeNavigation from "../layouts/HomeNavigation.astro";
 import Photo from "./Photo.astro";
+import Footer from "../components/Footer.astro";
 import * as BerlijnDuitsland2022 from "../pages/fragments/berlijn-duitsland-2022.md";
 import * as FunatsuJapan2017 from "../pages/fragments/funatsu-japan-2017.md";
 import * as FransumNederland2017 from "../pages/fragments/fransum-nederland-2017.md";
@@ -229,6 +230,7 @@ const items: (PhotoLayout | TextLayout)[] = [
       }
     </div>
   </section>
+  <Footer />
 </main>
 <style>
   section {
