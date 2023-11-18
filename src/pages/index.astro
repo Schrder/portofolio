@@ -1,10 +1,15 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import Intro from "../components/Intro.astro";
 import Home from "../components/Home.astro";
 ---
 
-<Intro />
-<Home />
+<Layout title="tom: introductie">
+  <Intro />
+  <Home />
+</Layout>
 <script>
-  document.add;
+  document.querySelector("header button").addEventListener("click", () => {
+    document.querySelector("nav").scrollIntoView({ behavior: "smooth" });
+  });
 </script>

@@ -1,5 +1,4 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import Photo from "./Photo.astro";
 
 const images = [
@@ -8,16 +7,14 @@ const images = [
 ];
 ---
 
-<Layout title="tom: introductie">
-  <header>
-    <Photo images={images} className="main-img" />
-    <div>
-      <h1>tom van der bijl<span>l</span></h1>
-      <h2>fotograaf-photographer</h2>
-    </div>
-    <button>discover</button>
-  </header>
-</Layout>
+<header>
+  <Photo images={images} className="header-img" />
+  <div>
+    <h1>tom van der bijl<span>l</span></h1>
+    <h2>fotograaf-photographer</h2>
+  </div>
+  <button>discover</button>
+</header>
 
 <style>
   header {
