@@ -33,6 +33,25 @@ const generateSrcset = (title: string, filetype: "jpeg" | "avif"): string => {
 
   return srcset;
 };
+const anim = {
+  old: {
+    name: "fadeIn",
+    duration: "0.2s",
+    easing: "linear",
+    fillMode: "forwards",
+  },
+  new: {
+    name: "fadeOut",
+    duration: "0.3s",
+    easing: "linear",
+    fillMode: "backwards",
+  },
+};
+
+const myFade = {
+  forwards: anim,
+  backwards: anim,
+};
 
 const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
 ---
@@ -61,6 +80,22 @@ const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
   img[data-animate].loaded {
     opacity: 1; /* Show the image when it's loaded */
   }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 </style>
 <script>
   const imgElement = document.querySelector("picture > img[data-animate]");
@@ -88,8 +123,8 @@ const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
       </>
     ))
   }
+  <!-- transition:name={images[0].title} -->
   <img
-    view-transition-name={images[0].title}
     src={fallbackImage}
     alt={images[0].title}
     loading={loading}

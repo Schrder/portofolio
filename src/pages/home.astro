@@ -194,6 +194,7 @@ const items: (PhotoLayout | TextLayout)[] = [
     <div>
       {
         items.map((item: PhotoLayout | TextLayout, index: number) => {
+          console.log(item.title);
           if ((item as PhotoLayout).title) {
             const photo = item as PhotoLayout;
 

@@ -18,6 +18,12 @@ if (frontmatter.photoWidth > frontmatter.photoHeight) {
 }
 
 const anim = {
+  old: {
+    name: "slide-down",
+    duration: "200ms",
+    easing: "ease-in",
+    fillMode: "backwards",
+  },
   new: {
     name: "slide-up",
     duration: "200ms",
@@ -36,7 +42,7 @@ const myFade = {
 <NavigationPage title={title}>
   <section id="detail-page">
     <Photo images={[{ title }]} animate={false} className="photo" />
-    <h1 transition:animate={myFade} view-transition-name="description">
+    <h1 transition:animate={myFade} transition:name="description">
       {frontmatter.description}
     </h1>
   </section>
@@ -63,6 +69,11 @@ const myFade = {
     display: grid;
     grid-template-rows: min-content 1fr;
     justify-content: center;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 200;
   }
 
   .photo {
