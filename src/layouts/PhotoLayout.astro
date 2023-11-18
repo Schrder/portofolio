@@ -7,10 +7,11 @@ const { frontmatter } = Astro.props;
 const title = frontmatter.title;
 const aspectRatio = `${frontmatter.width} / ${frontmatter.height}`;
 
-let photoWidth, photoHeight, pageHeight, enhancePageHeight;
+let photoWidth, photoHeight, photoMaxHeight, pageHeight, enhancePageHeight;
 if (frontmatter.width > frontmatter.height) {
   photoWidth = "100%";
   photoHeight = "auto";
+  photoMaxHeight = "80vh";
 } else {
   photoWidth = "auto";
   photoHeight = "100%";
@@ -57,6 +58,7 @@ const myFade = {
     aspectRatio,
     photoWidth,
     photoHeight,
+    photoMaxHeight,
     pageHeight,
     enhancePageHeight,
   }}
@@ -94,5 +96,6 @@ const myFade = {
     --photo-aspect-ratio: var(--aspectRatio);
     --photo-width: var(--photoWidth);
     --photo-height: var(--photoHeight);
+    --photo-max-height: var(--photoMaxHeight);
   }
 </style>
