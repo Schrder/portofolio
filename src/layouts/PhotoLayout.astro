@@ -9,7 +9,8 @@ const aspectRatio = `${frontmatter.width} / ${frontmatter.height}`;
 
 let photoWidth, photoHeight, photoMaxHeight, pageHeight, enhancePageHeight;
 if (frontmatter.width > frontmatter.height) {
-  photoWidth = "100%";
+  // TODO: figure out why 100% doesn't give the image full with during loading
+  photoWidth = "90vw";
   photoHeight = "auto";
   photoMaxHeight = "80vh";
 } else {
