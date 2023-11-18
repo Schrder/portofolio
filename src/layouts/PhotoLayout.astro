@@ -2,14 +2,13 @@
 import Photo from "../components/Photo.astro";
 import Nav from "../components/Nav.astro";
 import Layout from "./Layout.astro";
-import { fade } from "astro:transitions";
 
 const { frontmatter } = Astro.props;
 const title = frontmatter.title;
 const aspectRatio = `${frontmatter.width} / ${frontmatter.height}`;
 
 let photoWidth, photoHeight, pageHeight;
-if (frontmatter.photoWidth > frontmatter.photoHeight) {
+if (frontmatter.width > frontmatter.height) {
   photoWidth = "100%";
   photoHeight = "auto";
 } else {
@@ -44,7 +43,7 @@ const myFade = {
   <main>
     <Nav />
     <section id="detail-page">
-      <Photo images={[{ title }]} animate={false} className="photo" />
+      <Photo images={[{ title }]} className="photo" />
       <h1 transition:animate={myFade}>
         {frontmatter.description}
       </h1>
