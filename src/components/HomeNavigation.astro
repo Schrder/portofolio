@@ -1,6 +1,5 @@
 <nav>
   <button> <img src="/logo.png" alt="logo" /></button>
-  <!-- TODO: make title into component and reuse it here and in the index -->
   <h2>
     <button>tom van der bijl<span>l</span></button>
   </h2>
@@ -46,19 +45,21 @@
     cursor: pointer;
   }
 
-  h2 {
-    cursor: default;
-  }
   nav div a {
     font-size: 1rem;
   }
 
   h2 {
+    cursor: default;
     font-size: 1.2rem;
   }
 
   nav > :is(a, button) > img {
     height: 32px;
+  }
+
+  nav div a {
+    font-weight: 100;
   }
 
   @media (min-width: 768px) {
@@ -98,10 +99,6 @@
     gap: 0.5rem;
     align-items: center;
     font-size: 1.2rem;
-  }
-
-  nav div a {
-    font-weight: 100;
   }
 
   @media (min-width: 768px) {
