@@ -23,9 +23,11 @@ const socialImageURL = new URL(
   <ViewTransitions fallback="none" />
   <main>
     <nav>
-      <a href="/portofolio/"> <img src="/portofolio/logo.png" alt="logo" /></a>
+      <button> <img src="/portofolio/logo.png" alt="logo" /></button>
       <!-- TODO: make title into component and reuse it here and in the index -->
-      <h2><a href="/portofolio/home">tom van der bijl<span>l</span></a></h2>
+      <h2>
+        <button>tom van der bijl<span>l</span></button>
+      </h2>
       <div>
         <a href="/portofolio/contact">contact</a>
         <!-- TODO: place correct href when instagram is ready -->
@@ -39,13 +41,21 @@ const socialImageURL = new URL(
     </section>
   </main>
 </Layout>
-<style>
-  main {
-    display: grid;
-    grid-template-rows: 54px 1fr;
-    row-gap: var(--main-row-gap, 24px);
-  }
+<script is:inline>
+  document
+    .querySelector("nav > button:first-of-type")
+    .addEventListener("click", () => {
+      document.body.scrollIntoView({ behavior: "smooth" });
+    });
 
+  document.querySelector("nav > h2 > button").addEventListener("click", () => {
+    console.log("here");
+    document
+      .querySelector("main")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+</script>
+<style>
   section {
     max-width: 1600px;
     margin-inline: auto;
@@ -64,11 +74,19 @@ const socialImageURL = new URL(
     z-index: 1;
   }
 
+  button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+  }
   h2 {
     cursor: default;
   }
 
-  nav > a > img {
+  nav > :is(a, button) > img {
     height: 32px;
   }
 
@@ -76,12 +94,12 @@ const socialImageURL = new URL(
     h2 {
       font-size: 2.4em;
     }
-    nav > a > img {
+    nav > :is(a, button) > img {
       height: 48px;
     }
   }
 
-  h2 a {
+  h2 button {
     text-decoration: none;
   }
 
@@ -108,7 +126,7 @@ const socialImageURL = new URL(
   }
 
   nav div a,
-  h2 > a {
+  h2 > button {
     color: var(--text-color);
   }
 
@@ -120,7 +138,7 @@ const socialImageURL = new URL(
     width: 24px;
   }
 
-  nav > a {
+  nav > button {
     width: min-content;
     grid-row: 1;
     grid-column: 1;

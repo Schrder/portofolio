@@ -7,9 +7,9 @@ import Home from "../components/Home.astro";
 <Layout title="tom: introductie">
   <Intro />
   <Home />
+  <script is:inline>
+    document.querySelector("header button")?.addEventListener("click", () => {
+      document.querySelector("nav")?.scrollIntoView({ behavior: "smooth" });
+    });
+  </script>
 </Layout>
-<script>
-  document.querySelector("header button").addEventListener("click", () => {
-    document.querySelector("nav").scrollIntoView({ behavior: "smooth" });
-  });
-</script>

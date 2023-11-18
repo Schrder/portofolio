@@ -1,6 +1,7 @@
 ---
 import Photo from "../components/Photo.astro";
-import NavigationPage from "./NavigationPage.astro";
+import Nav from "../components/Nav.astro";
+import Layout from "./Layout.astro";
 import { fade } from "astro:transitions";
 
 const { frontmatter } = Astro.props;
@@ -39,14 +40,17 @@ const myFade = {
 };
 ---
 
-<NavigationPage title={title}>
-  <section id="detail-page">
-    <Photo images={[{ title }]} animate={false} className="photo" />
-    <h1 transition:animate={myFade} transition:name="description">
-      {frontmatter.description}
-    </h1>
-  </section>
-</NavigationPage>
+<Layout title={title}>
+  <main>
+    <Nav />
+    <section id="detail-page">
+      <Photo images={[{ title }]} animate={false} className="photo" />
+      <h1 transition:animate={myFade}>
+        {frontmatter.description}
+      </h1>
+    </section>
+  </main>
+</Layout>
 
 <style define:vars={{ aspectRatio, photoWidth, photoHeight, pageHeight }}>
   @keyframes slide-up {
