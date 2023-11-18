@@ -12,6 +12,7 @@ const images = [
   <div>
     <h1>tom van der bijl<span>l</span></h1>
     <h2>fotograaf-photographer</h2>
+    <img src="/portofolio/logo-white.png" />
   </div>
   <button>discover</button>
 </header>
@@ -22,6 +23,13 @@ const images = [
     display: grid;
     grid-template-rows: repeat(4, 1fr);
     --photo-border-radius: 0;
+  }
+
+  header > div > img {
+    width: 110px;
+    aspect-ratio: 1;
+    display: block;
+    margin-inline: auto;
   }
 
   header * {
@@ -74,6 +82,10 @@ const images = [
   @media (min-width: 768px) {
     header div h1 {
       font-size: 5em;
+    }
+
+    header > div > img {
+      width: 120px;
     }
   }
   header div h2 {
