@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import Layout from "./Layout.astro";
 
 export interface Props {
@@ -19,6 +20,7 @@ const socialImageURL = new URL(
   <meta property="og:type" content="website" slot="head" />
   <meta property="og:url" content={canonicalURL} slot="head" />
   <meta property="og:image" content={socialImageURL} slot="head" />
+  <ViewTransitions fallback="none" />
   <main>
     <nav>
       <a href="/portofolio/"> <img src="/portofolio/logo.png" alt="logo" /></a>

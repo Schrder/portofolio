@@ -1,37 +1,74 @@
 ---
 import Photo from "../components/Photo.astro";
 import NavigationPage from "./NavigationPage.astro";
+import { fade } from "astro:transitions";
+
 const { frontmatter } = Astro.props;
 const title = frontmatter.title;
+const aspectRatio = `${frontmatter.width} / ${frontmatter.height}`;
+
+let photoWidth, photoHeight, pageHeight;
+if (frontmatter.photoWidth > frontmatter.photoHeight) {
+  photoWidth = "100%";
+  photoHeight = "auto";
+} else {
+  photoWidth = "auto";
+  photoHeight = "100%";
+  pageHeight = "80vh";
+}
+
+const anim = {
+  new: {
+    name: "slide-up",
+    duration: "200ms",
+    delay: "50ms",
+    easing: "ease-out",
+    fillMode: "backwards",
+  },
+};
+
+const myFade = {
+  forwards: anim,
+  backwards: anim,
+};
 ---
 
 <NavigationPage title={title}>
   <section id="detail-page">
-    <Photo images={[{ title }]} animate={true} className="photo" />
-    <h1>{frontmatter.description}</h1>
+    <Photo images={[{ title }]} animate={false} className="photo" />
+    <h1 transition:animate={myFade} view-transition-name="description">
+      {frontmatter.description}
+    </h1>
   </section>
 </NavigationPage>
-<style>
+
+<style define:vars={{ aspectRatio, photoWidth, photoHeight, pageHeight }}>
+  @keyframes slide-up {
+    0% {
+      transform: translateY(2.5rem);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes slide-down {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(2.5rem);
+    }
+  }
   #detail-page {
     display: grid;
     grid-template-rows: min-content 1fr;
-    width: 400px;
-    width: 1000px;
-    margin-inline: auto;
+    justify-content: center;
   }
 
   .photo {
-    height: 75vh;
-  }
-
-  @media (max-aspect-ratio: 3/4) {
-    .photo {
-      background: orange;
-    }
-  }
-  @media (min-aspect-ratio: 4/3) {
-    .photo {
-      background: yellow;
-    }
+    height: var(--pageHeight);
+    --photo-aspect-ratio: var(--aspectRatio);
+    --photo-width: var(--photoWidth);
+    --photo-height: var(--photoHeight);
   }
 </style>
