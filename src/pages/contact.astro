@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
-const imageUrl = `${import.meta.env.BASE_URL}/assets/bio-foto_2400px.avif`;
+const imageUrl = `${import.meta.env.BASE_URL}assets/bio-foto_2400px.avif`;
 
 export interface Props {
   title: string;
@@ -12,7 +12,7 @@ export interface Props {
 const { title, socialImageTitle = title } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(
-  `${import.meta.env.BASE_URL}/assets/${socialImageTitle}_800px.jpg`,
+  `${import.meta.env.BASE_URL}assets/${socialImageTitle}_800px.jpg`,
   Astro.url,
 );
 ---

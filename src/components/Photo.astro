@@ -18,7 +18,7 @@ interface Props {
 }
 
 const { animate = false, loading = "lazy", className, images } = Astro.props;
-const prefix = `${import.meta.env.BASE_URL}/assets`;
+const prefix = `${import.meta.env.BASE_URL}assets`;
 const widths = [400, 800, 1200, 1600, 2000, 2400];
 
 const generateSrcset = (title: string, filetype: "jpeg" | "avif"): string => {
