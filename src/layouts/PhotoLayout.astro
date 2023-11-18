@@ -3,12 +3,35 @@ import Photo from "../components/Photo.astro";
 import NavigationPage from "./NavigationPage.astro";
 const { frontmatter } = Astro.props;
 const title = frontmatter.title;
-
 ---
 
-<NavigationPage title={title} >
+<NavigationPage title={title}>
   <section id="detail-page">
+    <Photo images={[{ title }]} animate={true} className="photo" />
     <h1>{frontmatter.description}</h1>
-    <Photo images={[{ title }]} animate={true} />
   </section>
 </NavigationPage>
+<style>
+  #detail-page {
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    width: 400px;
+    width: 1000px;
+    margin-inline: auto;
+  }
+
+  .photo {
+    height: 75vh;
+  }
+
+  @media (max-aspect-ratio: 3/4) {
+    .photo {
+      background: orange;
+    }
+  }
+  @media (min-aspect-ratio: 4/3) {
+    .photo {
+      background: yellow;
+    }
+  }
+</style>
