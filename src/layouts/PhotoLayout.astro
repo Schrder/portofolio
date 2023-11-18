@@ -7,7 +7,7 @@ const { frontmatter } = Astro.props;
 const title = frontmatter.title;
 const aspectRatio = `${frontmatter.width} / ${frontmatter.height}`;
 
-let photoWidth, photoHeight, pageHeight;
+let photoWidth, photoHeight, pageHeight, enhancePageHeight;
 if (frontmatter.width > frontmatter.height) {
   photoWidth = "100%";
   photoHeight = "auto";
@@ -15,6 +15,7 @@ if (frontmatter.width > frontmatter.height) {
   photoWidth = "auto";
   photoHeight = "100%";
   pageHeight = "80vh";
+  enhancePageHeight = "80svh";
 }
 
 const anim = {
@@ -51,7 +52,15 @@ const myFade = {
   </main>
 </Layout>
 
-<style define:vars={{ aspectRatio, photoWidth, photoHeight, pageHeight }}>
+<style
+  define:vars={{
+    aspectRatio,
+    photoWidth,
+    photoHeight,
+    pageHeight,
+    enhancePageHeight,
+  }}
+>
   @keyframes slide-up {
     0% {
       transform: translateY(2.5rem);
@@ -81,6 +90,7 @@ const myFade = {
 
   .photo {
     height: var(--pageHeight);
+    height: var(--enhancePageHeight);
     --photo-aspect-ratio: var(--aspectRatio);
     --photo-width: var(--photoWidth);
     --photo-height: var(--photoHeight);
