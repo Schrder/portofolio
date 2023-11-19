@@ -37,6 +37,7 @@ const generateSrcset = (title: string, filetype: "jpg" | "avif"): string => {
 const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
 ---
 
+<!-- TODO: split this css up. the level of configuration is too high -->
 <style>
   img {
     width: var(--photo-width, 100%);
