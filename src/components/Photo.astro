@@ -21,7 +21,7 @@ const { animate = false, loading = "lazy", className, images } = Astro.props;
 const prefix = `${import.meta.env.BASE_URL}assets`;
 const widths = [400, 800, 1200, 1600, 2000, 2400];
 
-const generateSrcset = (title: string, filetype: "jpeg" | "avif"): string => {
+const generateSrcset = (title: string, filetype: "jpg" | "avif"): string => {
   let srcset = "";
   widths.forEach((width) => {
     const variationName = `${prefix}/${title}_${width}px`;
@@ -84,7 +84,7 @@ const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
         <source
           type="image/jpeg"
           media={media}
-          srcset={generateSrcset(title, "jpeg")}
+          srcset={generateSrcset(title, "jpg")}
           sizes={sizes}
         />
       </>
