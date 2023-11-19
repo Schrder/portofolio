@@ -31,8 +31,8 @@ const { title } = Astro.props;
 
       main {
         display: grid;
-        grid-template-rows: 54px 1fr;
-        row-gap: 2vw;
+        grid-template-rows: 32px 1fr;
+        row-gap: min(2vw, 48px);
       }
 
       img {
@@ -70,7 +70,7 @@ const { title } = Astro.props;
 
       @media (min-width: 768px) {
         main {
-          row-gap: 48px;
+          grid-template-rows: 54px 1fr;
         }
       }
 
