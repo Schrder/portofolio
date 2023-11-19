@@ -22,7 +22,7 @@ const images = [
     height: 100vh;
     height: 100svh;
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: 3fr 1fr;
     --photo-border-radius: 0;
   }
 
@@ -33,15 +33,9 @@ const images = [
     margin-inline: auto;
   }
 
-  header * {
-    min-width: 0;
-    min-height: 0;
-    grid-row: 1;
-    grid-column: 1;
-  }
-
   .header-img {
-    grid-row: 1/5;
+    grid-row: 1 / span 2;
+    grid-column: 1;
   }
 
   h1:hover span {
@@ -52,7 +46,8 @@ const images = [
   header button {
     height: min-content;
     width: min-content;
-    grid-row: 4;
+    grid-row: 2;
+    grid-column: 1;
     justify-self: center;
 
     font-size: 1.4em;
@@ -69,8 +64,10 @@ const images = [
 
   header div {
     justify-self: center;
+    align-self: center;
     color: white;
-    grid-row: 2;
+    grid-row: 1;
+    grid-column: 1;
   }
 
   header div h1 {
