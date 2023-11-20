@@ -1,0 +1,67 @@
+nav {
+  border-block-end: 1px solid black;
+  position: sticky;
+  top: 0;
+  background-color: var(--variant-2);
+  display: grid;
+  padding-inline: 1em;
+  align-items: center;
+  z-index: 1;
+  padding-block: 0.25em;
+  font-size: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  display: block;
+}
+
+#contact {
+  color: var(--text-color);
+  font-weight: 100;
+  font-size: 1.25em;
+}
+
+nav div {
+  grid-row: 1;
+  grid-column: 2;
+  justify-self: end;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+nav h2:hover span {
+  margin-inline-start: 4px;
+  transition: all 0.5s ease-out;
+}
+
+#instagram {
+  height: 1.25em;
+  aspect-ratio: 1;
+}
+
+#logo {
+  height: 2em;
+}
+
+nav > h2 {
+  cursor: default;
+  font-size: 1.5em;
+  font-weight: 200;
+  grid-column: 1/3;
+  justify-self: center;
+  grid-row: 1;
+}
+
+nav > a {
+  width: min-content;
+  grid-row: 1;
+  grid-column: 1;
+}
+
+@media (min-width: 768px) {
+  nav {
+    font-size: 1.5rem;
+  }
+}

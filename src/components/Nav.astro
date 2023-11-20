@@ -1,92 +1,20 @@
+---
+import "../styles/nav.css";
+---
+
 <nav>
-  <a href="/"> <img src="/logo.png" alt="logo" /></a>
-  <!-- TODO: make title into component and reuse it here and in the index -->
+  <a href="/"> <img id="logo" src="/logo.png" alt="logo" /></a>
   <h2><a href="/">tom van der bijl<span>l</span></a></h2>
   <div>
-    <a href="/contact">contact</a>
+    <a id="contact" href="/contact">contact</a>
     <a href="https://instagram.com/tomvanderbijll"
-      ><img src="/assets/instagram-logo.svg" /></a
+      ><img id="instagram" src="/assets/instagram-logo.svg" /></a
     >
   </div>
 </nav>
 <style>
-  nav {
-    border-block-end: 1px solid black;
-    position: sticky;
-    top: 0;
-    background-color: var(--variant-2);
-    display: grid;
-    padding-inline: 1em;
-    align-items: center;
-    z-index: 1;
-  }
-
-  nav div {
-    font-size: 1rem;
-    font-weight: 100;
-  }
-
-  nav > h2 {
-    cursor: default;
-    font-size: 1.2rem;
-  }
-
-  nav > a > img {
-    height: 32px;
-  }
-
-  @media (min-width: 768px) {
-    nav h2 {
-      font-size: 2.4em;
-    }
-
-    nav > a > img {
-      height: 48px;
-    }
-
-    nav div {
-      font-size: 1.2rem;
-      gap: 1rem;
-      font-weight: 400;
-    }
-  }
-
-  nav a {
-    text-decoration: none;
-  }
-
-  nav h2:hover span {
-    margin-inline-start: 4px;
-    transition: all 0.5s ease-out;
-  }
-
-  nav h2 {
-    font-weight: 200;
-    grid-column: 1/3;
-    justify-self: center;
-    grid-row: 1;
-  }
-
-  nav div {
-    grid-row: 1;
-    grid-column: 2;
-    justify-self: end;
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  nav div a,
   nav h2 > a {
     color: var(--text-color);
-  }
-
-  nav div a:last-of-type {
-    line-height: 0;
-  }
-
-  nav div a img {
-    width: 24px;
   }
 
   nav > a {
