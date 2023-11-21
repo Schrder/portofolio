@@ -14,12 +14,8 @@ nav {
 nav a {
   text-decoration: none;
   display: block;
-}
-
-#contact {
   color: var(--text-color);
   font-weight: 100;
-  font-size: 1.25em;
 }
 
 nav div {
@@ -29,16 +25,12 @@ nav div {
   display: flex;
   gap: 0.5em;
   align-items: center;
+  font-size: 1.25em;
 }
 
 nav h2:hover span {
   margin-inline-start: 4px;
   transition: all 0.5s ease-out;
-}
-
-#instagram {
-  height: 1.25em;
-  aspect-ratio: 1;
 }
 
 #logo {
