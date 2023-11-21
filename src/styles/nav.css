@@ -8,7 +8,7 @@ nav {
   align-items: center;
   z-index: 1;
   padding-block: 0.25em;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 nav a {
@@ -25,7 +25,7 @@ nav div {
   display: flex;
   gap: 0.5em;
   align-items: center;
-  font-size: 1.25em;
+  font-size: 0.8em;
 }
 
 nav h2:hover span {
