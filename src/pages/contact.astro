@@ -15,6 +15,27 @@ const socialImageURL = new URL(
   `${import.meta.env.BASE_URL}assets/${socialImageTitle}_800px.jpg`,
   Astro.url,
 );
+
+const anim = {
+  old: {
+    name: "slide-up",
+    duration: "200ms",
+    easing: "ease-in",
+    fillMode: "backwards",
+  },
+  new: {
+    name: "slide-down",
+    duration: "300ms",
+    delay: "50ms",
+    easing: "ease-out",
+    fillMode: "backwards",
+  },
+};
+
+const myFade = {
+  forwards: anim,
+  backwards: anim,
+};
 ---
 
 <Layout title={title}>
@@ -27,13 +48,11 @@ const socialImageURL = new URL(
       <div class="main-nav">
         <a href="/"> <img id="logo" src="/logo.png" alt="logo" /></a>
         <h2><a href="/#photos">tom van der bijl<span>l</span></a></h2>
-        <div>
-          <a id="contact" href="/contact">contact</a>
-        </div>
+        <a id="contact" href="/contact">contact</a>
       </div>
       <aside>
-        <img src="assets/instagram-logo.svg" height="24" width="24" />
-        <a href="https://instagram.com">instagram</a>
+        <a transition:animate={myFade} href="https://instagram.com">instagram</a
+        >
       </aside>
     </nav>
     <section>
@@ -51,7 +70,6 @@ const socialImageURL = new URL(
           >
         </p>
       </div>
-
       <img src={imageUrl} width="400" height="400" />
       <div>
         <h2>NL</h2>
@@ -73,19 +91,21 @@ const socialImageURL = new URL(
 </Layout>
 <style>
   nav {
-    position: sticky;
-    top: 0;
     font-size: 1rem;
   }
 
   .main-nav {
     background-color: var(--variant-2);
     display: grid;
-    padding-inline: 1em;
     padding-block: 0.25em;
     align-items: center;
     z-index: 1;
     border-block-end: 1px solid black;
+  }
+
+  .main-nav,
+  nav > aside {
+    padding-inline: 0.5em;
   }
 
   nav a {
@@ -95,7 +115,7 @@ const socialImageURL = new URL(
     font-weight: 100;
   }
 
-  .main-nav > div {
+  .main-nav > #contact {
     grid-row: 1;
     grid-column: 2;
     justify-self: end;
@@ -145,15 +165,14 @@ const socialImageURL = new URL(
   }
 
   nav > aside {
-    padding-inline: 1em;
     padding-block: 0.2em;
     width: 100%;
     grid-column: 1 / span 2;
-    justify-self: end;
     display: flex;
     align-items: center;
     justify-content: end;
     gap: 4px;
+    font-size: 0.9em;
   }
 
   nav > aside > img {
@@ -213,6 +232,25 @@ const socialImageURL = new URL(
     section > img {
       margin-inline: 0;
       width: auto;
+    }
+  }
+
+  @keyframes slide-down {
+    0% {
+      transform: translateY(-2.5rem);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-up {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-2.5rem);
     }
   }
 </style>
