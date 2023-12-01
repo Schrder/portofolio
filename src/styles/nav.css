@@ -28,6 +28,10 @@ nav div {
   font-size: 1em;
 }
 
+nav h2:hover span {
+  margin-inline-start: 4px;
+  transition: all 0.5s ease-out;
+}
 
 #logo {
   height: 2em;
