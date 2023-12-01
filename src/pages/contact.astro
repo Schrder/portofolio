@@ -51,7 +51,12 @@ const myFade = {
         <a id="contact" href="/contact">contact</a>
       </div>
       <aside>
-        <a transition:animate={myFade} href="https://instagram.com">instagram</a
+        <a transition:animate={myFade} href="https://instagram.com"
+          ><img
+            src="/assets/instagram-logo.svg"
+            height="16"
+            width="16"
+          />instagram</a
         >
       </aside>
     </nav>
@@ -175,10 +180,10 @@ const myFade = {
     font-size: 0.9em;
   }
 
-  nav > aside > img {
-    aspect-ratio: 1;
-    width: 1lh;
-    height: 1lh;
+  nav > aside > a {
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
   }
 </style>
 <style>
