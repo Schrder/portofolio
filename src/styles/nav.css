@@ -4,7 +4,7 @@ nav {
   top: 0;
   background-color: var(--variant-2);
   display: grid;
-  padding-inline: 1em;
+  padding-inline: 0.5em;
   align-items: center;
   z-index: 1;
   padding-block: 0.25em;
