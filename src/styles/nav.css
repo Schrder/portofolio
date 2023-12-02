@@ -1,7 +1,5 @@
 nav {
   border-block-end: 1px solid black;
-  position: sticky;
-  top: 0;
   background-color: var(--variant-2);
   display: grid;
   padding-inline: 0.5em;
