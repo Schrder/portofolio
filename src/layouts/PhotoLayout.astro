@@ -2,6 +2,7 @@
 import Photo from "../components/Photo.astro";
 import Nav from "../components/Nav.astro";
 import Layout from "./Layout.astro";
+import "../styles/nav.css";
 
 const { frontmatter } = Astro.props;
 const title = frontmatter.title;
@@ -43,7 +44,11 @@ const myFade = {
 
 <Layout title={title}>
   <main>
-    <Nav />
+    <nav>
+      <a href="/"> <img id="logo" src="/logo.png" alt="logo" /></a>
+      <h2><a href="/#photos">tom van der bijl<span>l</span></a></h2>
+      <a id="contact" href="/contact">contact</a>
+    </nav>
     <section id="detail-page">
       <Photo images={[{ title }]} className="photo" />
       <h1 transition:animate={myFade}>
@@ -53,6 +58,13 @@ const myFade = {
   </main>
 </Layout>
 
+<style>
+  nav > a:first-of-type {
+    width: min-content;
+    grid-row: 1;
+    grid-column: 1;
+  }
+</style>
 <style
   define:vars={{
     aspectRatio,
