@@ -8,6 +8,7 @@ const title = frontmatter.title;
 const aspectRatio = `${frontmatter.width} / ${frontmatter.height}`;
 
 let photoWidth, photoHeight, photoMaxHeight, pageHeight, enhancePageHeight;
+
 if (frontmatter.width > frontmatter.height) {
   photoWidth = `calc(80vh * ${frontmatter.width} / ${frontmatter.height})`;
   photoHeight = "auto";

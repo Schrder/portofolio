@@ -15,9 +15,16 @@ interface Props {
   className?: string;
   loading?: "eager" | "lazy";
   images: ImageMetadata[];
+  title?: string;
 }
 
-const { animate = false, loading = "lazy", className, images } = Astro.props;
+const {
+  animate = false,
+  loading = "lazy",
+  className,
+  images,
+  title,
+} = Astro.props;
 const prefix = `${import.meta.env.BASE_URL}assets`;
 const widths = [400, 800, 1200, 1600, 2000, 2400];
 
@@ -93,6 +100,7 @@ const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
   }
   <img
     src={fallbackImage}
+    title={title ?? ""}
     alt={images[0].title}
     loading={loading}
     id={images[0].title}
