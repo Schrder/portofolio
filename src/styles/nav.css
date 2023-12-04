@@ -29,19 +29,23 @@ main > nav > h2 {
   grid-row: 1;
 }
 
-main > nav > #contact {
-  grid-row: 1;
-  grid-column: 2;
-  justify-self: end;
-  display: flex;
-  gap: 0.5em;
-  align-items: center;
-  font-size: 1em;
+main > nav > div {
+  display: none;
 }
 
 @media (min-width: 768px) {
   nav {
     font-size: 1.5rem;
+  }
+
+  main > nav > div {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    font-size: 1em;
   }
 }
 

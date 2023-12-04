@@ -113,7 +113,7 @@ const items: (PhotoLayout | TextLayout)[] = [
   },
   {
     description: LissabonPortugal2023.frontmatter.description,
-    sizes: "100vw",
+    sizes: "101vw",
     title: LissabonPortugal2023.frontmatter.title,
   },
   {
@@ -266,8 +266,17 @@ const items: (PhotoLayout | TextLayout)[] = [
   </section>
   <style>
     footer {
-      padding: 1em;
       background-color: var(--variant-2);
+      padding: 0.5em;
+      position: sticky;
+      bottom: 0;
+    }
+
+    @media (min-width: 768px) {
+      footer {
+        padding: 1em;
+        position: static;
+      }
     }
 
     footer > nav {
