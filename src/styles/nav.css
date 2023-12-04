@@ -47,6 +47,10 @@ main > nav > div {
     align-items: center;
     font-size: 1em;
   }
+  
+  main > nav > div > a:first-of-type {
+    order: 2;
+  }
 }
 
 main > nav h2:hover span {
