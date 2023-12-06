@@ -35,7 +35,7 @@ main > nav > div {
 
 @media (min-width: 768px) {
   main > nav {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   main > nav > div {
