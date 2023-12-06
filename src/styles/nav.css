@@ -34,7 +34,7 @@ main > nav > div {
 }
 
 @media (min-width: 768px) {
-  nav {
+  main > nav {
     font-size: 1.5rem;
   }
 
@@ -45,7 +45,6 @@ main > nav > div {
     display: flex;
     gap: 0.5em;
     align-items: center;
-    font-size: 1em;
   }
   
   main > nav > div > a:first-of-type {
