@@ -53,6 +53,7 @@ main > nav > div {
 }
 
 main > nav h2:hover span {
-  margin-inline-start: 4px;
+  display: inline-block;
+  transform: translateX(4px);
   transition: all 0.5s ease-out;
 }
