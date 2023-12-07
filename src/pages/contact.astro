@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
+import "../styles/nav.css";
 
 const imageUrl = `${import.meta.env.BASE_URL}assets/bio-foto_2400px.avif`;
 
@@ -15,27 +16,6 @@ const socialImageURL = new URL(
   `${import.meta.env.BASE_URL}assets/${socialImageTitle}_800px.jpg`,
   Astro.url,
 );
-
-const anim = {
-  old: {
-    name: "slide-up",
-    duration: "200ms",
-    easing: "ease-in",
-    fillMode: "backwards",
-  },
-  new: {
-    name: "slide-down",
-    duration: "300ms",
-    delay: "50ms",
-    easing: "ease-out",
-    fillMode: "backwards",
-  },
-};
-
-const myFade = {
-  forwards: anim,
-  backwards: anim,
-};
 ---
 
 <Layout title={title}>
@@ -45,22 +25,12 @@ const myFade = {
   <meta property="og:image" content={socialImageURL} slot="head" />
   <main>
     <nav>
-      <div class="main-nav">
-        <a href="/"> <img id="logo" src="/logo.png" alt="logo" /></a>
-        <h2><a href="/#photos">tom van der bijl<span>l</span></a></h2>
+      <a href="/"> <img id="logo" src="/logo.png" alt="logo" /></a>
+      <h2><a href="/#photos">tom van der bijl<span>l</span></a></h2>
+      <div>
+        <a href="https://instagram.com/tomvanderbijll">instagram</a>
         <a id="contact" href="/contact">contact</a>
       </div>
-      <aside>
-        <a
-          transition:animate={myFade}
-          href="https://instagram.com/tomvanderbijll"
-          ><img
-            src="/assets/instagram-logo.svg"
-            height="16"
-            width="16"
-          />instagram</a
-        >
-      </aside>
     </nav>
     <section>
       <div>
@@ -81,10 +51,10 @@ const myFade = {
       <div>
         <h2>NL</h2>
         <p>
-          Tom van der Bijll (1993), wonend in Amsterdam, opgeleid als
-          cultureel antropoloog en socioloog, fotografeert vanaf zijn
-          vijftiende, toen nog met een geleende camera. Richt zich met name op
-          straatfotografie, zowel analoog als digitaal.
+          Tom van der Bijll (1993), wonend in Amsterdam, opgeleid als cultureel
+          antropoloog en socioloog, fotografeert vanaf zijn vijftiende, toen nog
+          met een geleende camera. Richt zich met name op straatfotografie,
+          zowel analoog als digitaal.
         </p>
         <p>
           Voor informatie en fotoprints: <a
@@ -93,100 +63,52 @@ const myFade = {
         </p>
       </div>
     </section>
-    <Footer />
+    <footer>web design with ♡ by rogier de ruijter</footer>
+    <footer>
+      <nav>
+        <a href="/contact">contact</a>
+        <a href="https://instagram.com/tomvanderbijll">instagram</a>
+      </nav>
+    </footer>
   </main>
 </Layout>
 <style>
-  nav {
-    font-size: 1rem;
+  nav > a {
+    grid-row: 1;
+    grid-column: 1;
   }
 
-  .main-nav {
-    background-color: var(--variant-2);
-    display: grid;
-    padding-block: 0.25em;
-    align-items: center;
-    z-index: 1;
-    border-block-end: 1px solid black;
+  footer:first-of-type {
+    text-align: center;
+    padding: 1rem;
+    padding: 1rlh;
+    padding-block-start: 0;
+  }
+</style>
+<style>
+  footer:last-of-type {
+    background-color: var(--background-color);
+    padding: 0.5em;
+    padding-block-start: 1rem;
   }
 
-  .main-nav,
-  nav > aside {
-    padding-inline: 0.5em;
+  @media (min-width: 768px) {
+    footer:last-of-type {
+      display: none;
+    }
   }
 
-  nav a {
+  footer:last-of-type > nav {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+  }
+
+  footer:last-of-type > nav a {
     text-decoration: none;
     display: block;
     color: var(--text-color);
     font-weight: 100;
-  }
-
-  .main-nav > #contact {
-    grid-row: 1;
-    grid-column: 2;
-    justify-self: end;
-    display: flex;
-    gap: 0.5em;
-    align-items: center;
-    font-size: 1em;
-  }
-
-  nav h2:hover span {
-    margin-inline-start: 4px;
-    transition: all 0.5s ease-out;
-  }
-
-  #logo {
-    height: 2em;
-  }
-
-  .main-nav > h2 {
-    cursor: default;
-    font-size: 1.5em;
-    font-weight: 200;
-    grid-column: 1/3;
-    justify-self: center;
-    grid-row: 1;
-  }
-
-  .main-nav > a {
-    width: min-content;
-    grid-row: 1;
-    grid-column: 1;
-  }
-
-  @media (min-width: 768px) {
-    nav {
-      font-size: 1.25rem;
-    }
-  }
-
-  .main-nav h2 > a {
-    color: var(--text-color);
-  }
-
-  .main-nav > a {
-    width: min-content;
-    grid-row: 1;
-    grid-column: 1;
-  }
-
-  nav > aside {
-    padding-block: 0.2em;
-    width: 100%;
-    grid-column: 1 / span 2;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    gap: 4px;
-    font-size: 0.9em;
-  }
-
-  nav > aside > a {
-    display: flex;
-    align-items: center;
-    gap: 0.2em;
   }
 </style>
 <style>
