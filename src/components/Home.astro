@@ -34,10 +34,8 @@ import * as Tokyo2Japan2017 from "../pages/fragments/tokyo-2-japan-2017.md";
 
 interface PhotoLayout {
   title: string;
-
   sizes: string;
   loading?: "eager" | "lazy";
-  objectPosition?: string;
   media?: string;
 }
 
@@ -55,7 +53,6 @@ const items: (PhotoLayout | TextLayout)[] = [
     sizes: "33vw",
     title: FunatsuJapan2017.frontmatter.title,
     loading: "eager",
-    objectPosition: "center 100%",
   },
   {
     sizes: "33vw",
@@ -207,7 +204,6 @@ const items: (PhotoLayout | TextLayout)[] = [
                 href={`${import.meta.env.BASE_URL}fragments/${photo.title}`}
                 style={{
                   "--photo-grid-area": `item${index + 1}`,
-                  "--photo-object-position": photo.objectPosition || "",
                 }}
               >
                 <Photo
