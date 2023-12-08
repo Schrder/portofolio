@@ -1,6 +1,5 @@
 ---
 import Photo from "../components/Photo.astro";
-import Nav from "../components/Nav.astro";
 import Layout from "./Layout.astro";
 import "../styles/nav.css";
 
@@ -53,7 +52,7 @@ const myFade = {
       </div>
     </nav>
     <section id="detail-page">
-      <Photo images={[{ title }]} className="photo" />
+      <Photo images={[{ title }]} />
       <h1 transition:animate={myFade}>
         {frontmatter.description}
       </h1>
@@ -155,10 +154,10 @@ const myFade = {
     }
   }
 
-  .photo {
+  #detail-page :global(img) {
     height: var(--pageHeight);
     height: var(--enhancePageHeight);
-
+    --photo-border-radius: 0;
     --photo-aspect-ratio: var(--aspectRatio);
     --photo-width: var(--photoWidth);
     --photo-height: var(--photoHeight);

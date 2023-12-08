@@ -8,7 +8,7 @@ const images = [
 ---
 
 <header>
-  <Photo images={images} className="header-img" loading="eager" />
+  <Photo images={images} loading="eager" />
   <div>
     <h1>tom van der bijl<span>l</span></h1>
     <h2>fotograaf-photographer</h2>
@@ -23,7 +23,6 @@ const images = [
     height: 100svh;
     display: grid;
     grid-template-rows: 3fr 1fr;
-    --photo-border-radius: 0;
   }
 
   header > div > img {
@@ -33,9 +32,10 @@ const images = [
     margin-inline: auto;
   }
 
-  .header-img {
+  header :global(picture) {
     grid-row: 1 / span 2;
     grid-column: 1;
+    --photo-border-radius: 0;
   }
 
   h1:hover span {
