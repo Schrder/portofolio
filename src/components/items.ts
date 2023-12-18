@@ -1,6 +1,3 @@
----
-import HomeNavigation from "../components/HomeNavigation.astro";
-import Photo from "./Photo.astro";
 import * as BerlijnDuitsland2022 from "../pages/fragments/berlijn-duitsland-2022.md";
 import * as FunatsuJapan2017 from "../pages/fragments/funatsu-japan-2017.md";
 import * as FransumNederland2017 from "../pages/fragments/fransum-nederland-2017.md";
@@ -32,14 +29,15 @@ import * as IsfahanIran2016 from "../pages/fragments/isfahan-iran-2016.md";
 import * as MadridSpanje2013 from "../pages/fragments/madrid-spanje-2013.md";
 import * as Tokyo2Japan2017 from "../pages/fragments/tokyo-2-japan-2017.md";
 
-interface PhotoLayout {
+console.log(BerlijnDuitsland2022);
+export interface PhotoLayout {
   title: string;
   sizes: string;
   loading?: "eager" | "lazy";
   media?: string;
 }
 
-interface TextLayout {
+export interface TextLayout {
   text: string;
 }
 
@@ -188,176 +186,3 @@ export const items: (PhotoLayout | TextLayout)[] = [
     title: Tokyo2Japan2017.frontmatter.title,
   },
 ];
----
-
-<main>
-  <HomeNavigation />
-  <section>
-    <div>
-      {
-        items.map((item: PhotoLayout | TextLayout, index: number) => {
-          if ((item as PhotoLayout).title) {
-            const photo = item as PhotoLayout;
-
-            return (
-              <a
-                href={`${import.meta.env.BASE_URL}fragments/${photo.title}`}
-                style={{
-                  "--photo-grid-area": `item${index + 1}`,
-                }}
-              >
-                <Photo
-                  images={[
-                    {
-                      title: photo.title,
-                      sizes: photo.sizes,
-                      media: photo.media,
-                    },
-                  ]}
-                  loading={photo.loading}
-                />
-              </a>
-            );
-          } else {
-            return (
-              <aside style={{ "--photo-grid-area": `item${index + 1}` }}>
-                <span set:html={(item as TextLayout).text} />
-              </aside>
-            );
-          }
-        })
-      }
-    </div>
-  </section>
-  <style>
-    footer {
-      background-color: var(--background-color);
-      padding: 0.5em;
-      position: sticky;
-      bottom: 0;
-      font-size: 1.2rem;
-    }
-
-    @media (min-width: 768px) {
-      footer {
-        padding: 1em;
-        position: static;
-      }
-    }
-
-    footer > nav {
-      display: flex;
-      gap: 1em;
-      justify-content: center;
-    }
-
-    footer > nav a {
-      text-decoration: none;
-      display: block;
-      color: var(--text-color);
-      font-weight: 300;
-    }
-  </style>
-  <footer>
-    <nav>
-      <a href="/contact">contact</a>
-      <a href="https://instagram.com/tomvanderbijll">instagram</a>
-    </nav>
-  </footer>
-</main>
-<style>
-  section {
-    container-type: inline-size;
-  }
-
-  section > div {
-    display: grid;
-    gap: 1vw;
-    gap: 1cqw;
-    grid-template-columns: repeat(4, 0.42075fr) repeat(2, 0.5fr);
-    grid-template-rows: repeat(61, 20vw);
-    grid-template-rows: repeat(61, 21.5cqw);
-    grid-template-areas:
-      "item1 item1 item1 item1 item2 item2"
-      "item1 item1 item1 item1 item2 item2"
-      "item3 item3 item4 item4 item4 item4"
-      "item3 item3 item4 item4 item4 item4"
-      "item5 item5 item5 item5 item5 item5"
-      "item6 item6 item6 item7 item7 item7"
-      "item6 item6 item6 item7 item7 item7"
-      "item6 item6 item6 item7 item7 item7"
-      "item8 item8 item8 item8 item8 item8"
-      "item8 item8 item8 item8 item8 item8"
-      "item8 item8 item8 item8 item8 item8"
-      "item9 item9 item9 item9 item9 item9"
-      "item9 item9 item9 item9 item9 item9"
-      "item9 item9 item9 item9 item9 item9"
-      "item10 item10 item10 item10 item10 item10"
-      "item11 item11 item11 item12 item12 item12"
-      "item11 item11 item11 item12 item12 item12"
-      "item11 item11 item11 item12 item12 item12"
-      "item13 item13 item13 item13 item13 item13"
-      "item13 item13 item13 item13 item13 item13"
-      "item13 item13 item13 item13 item13 item13"
-      "item14 item14 item14 item14 item15 item15"
-      "item14 item14 item14 item14 item16 item16"
-      "item17 item17 item17 item17 item17 item17"
-      "item17 item17 item17 item17 item17 item17"
-      "item17 item17 item17 item17 item17 item17"
-      "item18 item18 item18 item18 item18 item18"
-      ". item19 item19 item19 item19 ."
-      ". item19 item19 item19 item19 ."
-      ". item19 item19 item19 item19 ."
-      ". item19 item19 item19 item19 ."
-      "item20 item20 item20 item20 item21 item21"
-      "item20 item20 item20 item20 item21 item21"
-      "item22 item22 item22 item22 item22 item22"
-      "item22 item22 item22 item22 item22 item22"
-      "item22 item22 item22 item22 item22 item22"
-      "item23 item23 item23 item23 item23 item23"
-      "item23 item23 item23 item23 item23 item23"
-      "item23 item23 item23 item23 item23 item23"
-      "item24 item24 item24 item24 item24 item24"
-      "item25 item25 item25 item25 item26 item26"
-      "item25 item25 item25 item25 item26 item26"
-      ". item27 item27 item27 item27 ."
-      ". item27 item27 item27 item27 ."
-      ". item27 item27 item27 item27 ."
-      ". item27 item27 item27 item27 ."
-      "item28 item28 item30 item30 item30 item30"
-      "item29 item29 item30 item30 item30 item30"
-      "item31 item31 item31 item31 item31 item31"
-      "item31 item31 item31 item31 item31 item31"
-      "item31 item31 item31 item31 item31 item31"
-      "item32 item32 item32 item32 item32 item32"
-      "item33 item33 item33 item33 item33 item33"
-      "item33 item33 item33 item33 item33 item33"
-      "item33 item33 item33 item33 item33 item33"
-      "item34 item34 item34 item34 item34 item34"
-      "item34 item34 item34 item34 item34 item34"
-      "item34 item34 item34 item34 item34 item34"
-      "item35 item35 item35 item35 item35 item35"
-      "item35 item35 item35 item35 item35 item35"
-      "item35 item35 item35 item35 item35 item35";
-  }
-
-  a,
-  aside {
-    grid-area: var(--photo-grid-area);
-  }
-
-  aside {
-    container-type: size;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  span {
-    font-size: 5vw;
-    font-size: 22cqh;
-    font-weight: 100;
-    text-wrap: balance;
-    text-align: center;
-  }
-</style>
