@@ -166,22 +166,17 @@ const myFade = {
 ---
 
 <Layout title={title}>
-  <script 
-    defer 
-    slot="head" 
-    src="https://unpkg.com/htmx.org@1.9.9"
-  ></script>
+  <script defer slot="head" src="https://unpkg.com/htmx.org@1.9.9"></script>
   <script
     defer
     slot="head"
-    src="https://unpkg.com/htmx.org/dist/ext/head-support.js">
-  </script>
+    src="https://unpkg.com/htmx.org/dist/ext/head-support.js"></script>
   <script is:inline>
     if (window.htmx) {
       document.addEventListener("astro:page-load", () => {
-        htmx.process(document)
+        htmx.process(document);
       });
-    } 
+    }
   </script>
   <main>
     <nav>
@@ -342,4 +337,5 @@ const myFade = {
     --photo-width: var(--photoWidth);
     --photo-height: var(--photoHeight);
     --photo-max-height: var(--photoMaxHeight);
+  }
 </style>
