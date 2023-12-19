@@ -204,7 +204,7 @@ const myFade = {
           if (item.title === title) {
             return (
               <div id={`main-section-${item.title}`}>
-                <Photo images={[{ title }]} />
+                <Photo images={[{ title }]} loading="eager" />
                 <h1 transition:animate={myFade}>{frontmatter.description}</h1>
               </div>
             );
@@ -292,7 +292,7 @@ const myFade = {
   }
 
   main {
-    height: 100vh;
+    min-height: 100vh;
   }
 
   #detail-page {
@@ -320,7 +320,8 @@ const myFade = {
   }
 
   section > div {
-    height: 100vh;
+    /* Roughly the size of the screen minus the top bar */
+    height: 95vh;
     scroll-snap-align: start;
   }
 
