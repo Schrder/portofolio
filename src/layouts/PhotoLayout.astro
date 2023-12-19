@@ -281,11 +281,7 @@ const myFade = {
               hx-select={`#main-section-${item.title}`}
               style={`
               --aspect-ratio: ${item.width} / ${item.height}; 
-              --loading-width: ${
-                item.width > item.height
-                  ? `calc(80vh * ${frontmatter.width} / ${frontmatter.height})`
-                  : "auto"
-              }; 
+              --loading-width: ${item.width > item.height ? "100%" : "auto"}; 
               --loading-height: ${item.width > item.height ? "auto" : "80vh"};
               `}
             >
