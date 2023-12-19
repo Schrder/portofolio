@@ -2,19 +2,146 @@
 import Photo from "../components/Photo.astro";
 import Layout from "./Layout.astro";
 import "../styles/nav.css";
+import * as BerlijnDuitsland2022 from "../pages/fragments/berlijn-duitsland-2022.md";
+import * as FunatsuJapan2017 from "../pages/fragments/funatsu-japan-2017.md";
+import * as FransumNederland2017 from "../pages/fragments/fransum-nederland-2017.md";
+import * as Tanabe2Japan2017 from "../pages/fragments/tanabe-2-japan-2017.md";
+import * as DarelkebdaniMarokko2015 from "../pages/fragments/darelkebdani-marokko-2015.md";
+import * as JeruzalemIsrael2014 from "../pages/fragments/jeruzalem-israel-2014.md";
+import * as AmsterdamNederland2022 from "../pages/fragments/amsterdam-nederland-2022.md";
+import * as ArdabilIran2016 from "../pages/fragments/ardabil-iran-2016.md";
+import * as Isfahan2Iran2016 from "../pages/fragments/isfahan-2-iran-2016.md";
+import * as FujikawaguchikoJapan2017 from "../pages/fragments/fujikawaguchiko-japan-2017.md";
+import * as LissabonPortugal2023 from "../pages/fragments/lissabon-portugal-2023.md";
+import * as LissabonPortugal2015 from "../pages/fragments/lissabon-portugal-2015.md";
+import * as TanabeJapan2017 from "../pages/fragments/tanabe-japan-2017.md";
+import * as Geiranger2Noorwegen2022 from "../pages/fragments/geiranger-2-noorwegen-2022.md";
+import * as Isfahan3Iran2016 from "../pages/fragments/isfahan-3-iran-2016.md";
+import * as TokyoJapan2017 from "../pages/fragments/tokyo-japan-2017.md";
+import * as SeoulKorea2019 from "../pages/fragments/seoul-korea-2019.md";
+import * as Isfahan4Iran2016 from "../pages/fragments/isfahan-4-iran-2016.md";
+import * as Amsterdam2Nederland2017 from "../pages/fragments/amsterdam-2-nederland-2017.md";
+import * as Lissabon2Portugal2023 from "../pages/fragments/lissabon-2-portugal-2023.md";
+import * as EnnaItalie2022 from "../pages/fragments/enna-italie-2022.md";
+import * as PortoPortugal2015 from "../pages/fragments/porto-portugal-2015.md";
+import * as AmsterdamNederland2017 from "../pages/fragments/amsterdam-nederland-2017.md";
+import * as AarhusDenemarken2023 from "../pages/fragments/aarhus-denemarken-2023.md";
+import * as NoordpolderzijlNederland2017 from "../pages/fragments/noordpolderzijl-nederland-2017.md";
+import * as GeirangerNoorwegen2022 from "../pages/fragments/geiranger-noorwegen-2022.md";
+import * as QazvinIran2016 from "../pages/fragments/qazvin-iran-2016.md";
+import * as IsfahanIran2016 from "../pages/fragments/isfahan-iran-2016.md";
+import * as MadridSpanje2013 from "../pages/fragments/madrid-spanje-2013.md";
+import * as Tokyo2Japan2017 from "../pages/fragments/tokyo-2-japan-2017.md";
 
+const items: { title: string }[] = [
+  {
+    title: BerlijnDuitsland2022.frontmatter.title,
+  },
+  {
+    title: FunatsuJapan2017.frontmatter.title,
+  },
+  {
+    title: FransumNederland2017.frontmatter.title,
+  },
+  {
+    title: Tanabe2Japan2017.frontmatter.title,
+  },
+  {
+    title: DarelkebdaniMarokko2015.frontmatter.title,
+  },
+  {
+    title: JeruzalemIsrael2014.frontmatter.title,
+  },
+  {
+    title: AmsterdamNederland2022.frontmatter.title,
+  },
+  {
+    title: ArdabilIran2016.frontmatter.title,
+  },
+  {
+    title: Isfahan3Iran2016.frontmatter.title,
+  },
+  {
+    title: FujikawaguchikoJapan2017.frontmatter.title,
+  },
+  {
+    title: LissabonPortugal2023.frontmatter.title,
+  },
+  {
+    title: LissabonPortugal2015.frontmatter.title,
+  },
+  {
+    title: TanabeJapan2017.frontmatter.title,
+  },
+  {
+    title: Geiranger2Noorwegen2022.frontmatter.title,
+  },
+  {
+    title: Isfahan2Iran2016.frontmatter.title,
+  },
+  {
+    title: TokyoJapan2017.frontmatter.title,
+  },
+  {
+    title: SeoulKorea2019.frontmatter.title,
+  },
+  {
+    title: Isfahan4Iran2016.frontmatter.title,
+  },
+  {
+    title: Amsterdam2Nederland2017.frontmatter.title,
+  },
+  {
+    title: Lissabon2Portugal2023.frontmatter.title,
+  },
+  {
+    title: EnnaItalie2022.frontmatter.title,
+  },
+  {
+    title: PortoPortugal2015.frontmatter.title,
+  },
+  {
+    title: AmsterdamNederland2017.frontmatter.title,
+  },
+  {
+    title: AarhusDenemarken2023.frontmatter.title,
+  },
+  {
+    title: NoordpolderzijlNederland2017.frontmatter.title,
+  },
+  {
+    title: GeirangerNoorwegen2022.frontmatter.title,
+  },
+  {
+    title: QazvinIran2016.frontmatter.title,
+  },
+  {
+    title: IsfahanIran2016.frontmatter.title,
+  },
+  {
+    title: MadridSpanje2013.frontmatter.title,
+  },
+  {
+    title: Tokyo2Japan2017.frontmatter.title,
+  },
+];
 const { frontmatter } = Astro.props;
 const title = frontmatter.title;
 const aspectRatio = `${frontmatter.width} / ${frontmatter.height}`;
 
-let photoWidth, photoHeight, photoMaxHeight, pageHeight, enhancePageHeight;
+let photoWidth, pageHeight, enhancePageHeight;
 
 if (frontmatter.width > frontmatter.height) {
   photoWidth = `calc(80vh * ${frontmatter.width} / ${frontmatter.height})`;
-  photoHeight = "auto";
+  /* This is massive tech deb. This overwrite is needed because if the first image
+   * that is loaded is portrait, the pageHeight will be set to 80vh
+   * this custom property is set on the body tag of this page
+   * that is the problem, because the enhancePageHeight is not for landscape images
+   * that's why we need to reset it here
+   */
+  enhancePageHeight = "auto";
 } else {
   photoWidth = "auto";
-  photoHeight = "100%";
   pageHeight = "80vh";
   enhancePageHeight = "80svh";
 }
@@ -42,6 +169,18 @@ const myFade = {
 ---
 
 <Layout title={title}>
+  <script defer slot="head" src="https://unpkg.com/htmx.org@1.9.9"></script>
+  <script
+    defer
+    slot="head"
+    src="https://unpkg.com/htmx.org/dist/ext/head-support.js"></script>
+  <script is:inline>
+    if (window.htmx) {
+      document.addEventListener("astro:page-load", () => {
+        htmx.process(document);
+      });
+    }
+  </script>
   <main>
     <nav>
       <a href="/"> <img id="logo" src="/logo.png" alt="logo" /></a>
@@ -57,17 +196,43 @@ const myFade = {
         grid-row: 1;
         grid-column: 1;
       }
+      main > nav {
+        position: sticky;
+        top: 0;
+      }
     </style>
     <section id="detail-page">
-      <Photo images={[{ title }]} />
-      <h1 transition:animate={myFade}>
-        {frontmatter.description}
-      </h1>
+      {
+        items.map((item) => {
+          if (item.title === title) {
+            return (
+              <div id={`main-section-${item.title}`}>
+                <Photo images={[{ title }]} loading="eager" />
+                <h1 transition:animate={myFade}>{frontmatter.description}</h1>
+              </div>
+            );
+          }
+          return (
+            <div
+              class="animate"
+              hx-get={`/fragments/${item.title}`}
+              hx-swap="innerHTML"
+              hx-trigger="intersect"
+              hx-select={`#main-section-${item.title}`}
+            />
+          );
+        })
+      }
     </section>
+    <script is:inline define:vars={{ title }}>
+      document.querySelector(`#${title}`).parentElement.scrollIntoView();
+    </script>
     <style>
       footer {
         background-color: var(--background-color);
         padding: 0.5em;
+        position: sticky;
+        bottom: 0;
       }
 
       @media (min-width: 768px) {
@@ -102,8 +267,6 @@ const myFade = {
   define:vars={{
     aspectRatio,
     photoWidth,
-    photoHeight,
-    photoMaxHeight,
     pageHeight,
     enhancePageHeight,
   }}
@@ -113,6 +276,7 @@ const myFade = {
       opacity: 0;
       transform: translateY(2.5rem);
     }
+
     100% {
       opacity: 1;
       transform: translateY(0);
@@ -133,8 +297,9 @@ const myFade = {
   }
 
   #detail-page {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    justify-content: center;
   }
 
   #detail-page {
@@ -149,20 +314,42 @@ const myFade = {
     text-align: center;
   }
 
+  section {
+    scroll-snap-type: y mandatory;
+    overflow: scroll;
+    height: 100%;
+  }
+
+  section > div {
+    /* Roughly the size of the screen minus the top bar */
+    height: 95vh;
+    scroll-snap-align: start;
+  }
+
   @media (min-width: 768px) {
     h1 {
       font-size: 1.4rem;
     }
   }
 
+  .animate :global(img) {
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-behavior: allow-discrete;
+  }
+
+  @starting-style {
+    .animate :global(img) {
+      opacity: 0;
+    }
+  }
+
   #detail-page :global(img) {
     height: var(--pageHeight);
     height: var(--enhancePageHeight);
-
-    --photo-border-radius: 0;
-    --photo-aspect-ratio: var(--aspectRatio);
-    --photo-width: var(--photoWidth);
-    --photo-height: var(--photoHeight);
-    --photo-max-height: var(--photoMaxHeight);
+    width: var(--photoWidth);
+    aspect-ratio: var(--aspectRatio);
+    border-radius: 0;
   }
 </style>
