@@ -129,16 +129,19 @@ const { frontmatter } = Astro.props;
 const title = frontmatter.title;
 const aspectRatio = `${frontmatter.width} / ${frontmatter.height}`;
 
-let photoWidth, photoHeight, photoMaxHeight, pageHeight, enhancePageHeight;
+let photoWidth, pageHeight, enhancePageHeight;
 
 if (frontmatter.width > frontmatter.height) {
   photoWidth = `calc(80vh * ${frontmatter.width} / ${frontmatter.height})`;
-  photoHeight = "auto";
-  // TODO: fix inhertance here
+  /* This is massive tech deb. This overwrite is needed because if the first image
+   * that is loaded is portrait, the pageHeight will be set to 80vh
+   * this custom property is set on the body tag of this page
+   * that is the problem, because the enhancePageHeight is not for landscape images
+   * that's why we need to reset it here
+   */
   enhancePageHeight = "auto";
 } else {
   photoWidth = "auto";
-  photoHeight = "100%";
   pageHeight = "80vh";
   enhancePageHeight = "80svh";
 }
@@ -264,8 +267,6 @@ const myFade = {
   define:vars={{
     aspectRatio,
     photoWidth,
-    photoHeight,
-    photoMaxHeight,
     pageHeight,
     enhancePageHeight,
   }}
@@ -347,11 +348,8 @@ const myFade = {
   #detail-page :global(img) {
     height: var(--pageHeight);
     height: var(--enhancePageHeight);
-
-    --photo-border-radius: 0;
-    --photo-aspect-ratio: var(--aspectRatio);
-    --photo-width: var(--photoWidth);
-    --photo-height: var(--photoHeight);
-    --photo-max-height: var(--photoMaxHeight);
+    width: var(--photoWidth);
+    aspect-ratio: var(--aspectRatio);
+    border-radius: 0;
   }
 </style>
