@@ -192,11 +192,11 @@ const aspectRatio = `${frontmatter.width} / ${frontmatter.height}`;
 let photoWidth, pageHeight, enhancePageHeight;
 
 if (frontmatter.width > frontmatter.height) {
-  photoWidth = `calc(80vh * ${frontmatter.width} / ${frontmatter.height})`;
+  photoWidth = `calc(var(--max-photo-height) * ${frontmatter.width} / ${frontmatter.height})`;
   pageHeight = "auto";
 } else {
   photoWidth = "auto";
-  pageHeight = `calc(96vw * ${frontmatter.height} / ${frontmatter.width})`;
+  pageHeight = `calc(var(--container-width) * ${frontmatter.height} / ${frontmatter.width})`;
 }
 
 const anim = {
@@ -278,7 +278,7 @@ const myFade = {
                 --loading-height: ${
                   item.width > item.height
                     ? "auto"
-                    : `calc(96vw * ${item.height} / ${item.width})`
+                    : `calc(var(--container-width) * ${item.height} / ${item.width})`
                 };
               `}
             >
@@ -359,6 +359,14 @@ const myFade = {
   main {
     height: 100vh;
     height: 100svh;
+    --container-width: 96vw;
+    --max-photo-height: 80svh;
+  }
+
+  @supports not (height: 1svh) {
+    main {
+      --max-photo-height: 80vh;
+    }
   }
 
   #detail-page {
@@ -414,7 +422,7 @@ const myFade = {
   }
 
   .animate > aside,
-  detail-page :global(img) {
-    max-height: 80vh;
+  #detail-page :global(img) {
+    max-height: var(--max-photo-height);
   }
 </style>
