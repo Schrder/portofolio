@@ -211,6 +211,7 @@ const myFade = {
           }
           return (
             <div
+              class="animate"
               hx-get={`/fragments/${item.title}`}
               hx-swap="innerHTML"
               hx-trigger="intersect"
@@ -325,6 +326,19 @@ const myFade = {
   @media (min-width: 768px) {
     h1 {
       font-size: 1.4rem;
+    }
+  }
+
+  .animate :global(img) {
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-behavior: allow-discrete;
+  }
+
+  @starting-style {
+    .animate :global(img) {
+      opacity: 0;
     }
   }
 
