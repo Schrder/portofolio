@@ -166,14 +166,23 @@ const myFade = {
 ---
 
 <Layout title={title}>
-  <script defer slot="head" is:inline src="https://unpkg.com/htmx.org@1.9.9"
+  <script 
+    defer 
+    slot="head" 
+    src="https://unpkg.com/htmx.org@1.9.9"
   ></script>
   <script
     defer
-    is:inline
     slot="head"
-    src="https://unpkg.com/htmx.org/dist/ext/head-support.js"></script>
-
+    src="https://unpkg.com/htmx.org/dist/ext/head-support.js">
+  </script>
+  <script is:inline>
+    if (window.htmx) {
+      document.addEventListener("astro:page-load", () => {
+        htmx.process(document)
+      });
+    } 
+  </script>
   <main>
     <nav>
       <a href="/"> <img id="logo" src="/logo.png" alt="logo" /></a>
@@ -183,6 +192,17 @@ const myFade = {
         <a id="contact" href="/contact">contact</a>
       </div>
     </nav>
+    <style>
+      nav > a:first-of-type {
+        width: 44px;
+        grid-row: 1;
+        grid-column: 1;
+      }
+      main > nav {
+        position: sticky;
+        top: 0;
+      }
+    </style>
     <section id="detail-page">
       {
         items.map((item) => {
@@ -197,7 +217,7 @@ const myFade = {
           return (
             <div
               hx-get={`/fragments/${item.title}`}
-              hx-swap="innerHTML transition:true"
+              hx-swap="innerHTML"
               hx-trigger="intersect"
               hx-select={`#main-section-${item.title}`}
             />
@@ -244,17 +264,6 @@ const myFade = {
   </main>
 </Layout>
 
-<style>
-  main > nav {
-    position: sticky;
-    top: 0;
-  }
-  nav > a:first-of-type {
-    width: 44px;
-    grid-row: 1;
-    grid-column: 1;
-  }
-</style>
 <style
   define:vars={{
     aspectRatio,
@@ -275,6 +284,7 @@ const myFade = {
       transform: translateY(0);
     }
   }
+
   @keyframes slide-down {
     0% {
       transform: translateY(0);
@@ -283,6 +293,7 @@ const myFade = {
       transform: translateY(2.5rem);
     }
   }
+
   main {
     height: 100vh;
   }
@@ -325,10 +336,11 @@ const myFade = {
   #detail-page :global(img) {
     height: var(--pageHeight);
     height: var(--enhancePageHeight);
+
     --photo-border-radius: 0;
+    --photo-aspect-ratio: var(--aspectRatio);
     --photo-aspect-ratio: var(--aspectRatio);
     --photo-width: var(--photoWidth);
     --photo-height: var(--photoHeight);
     --photo-max-height: var(--photoMaxHeight);
-  }
 </style>
