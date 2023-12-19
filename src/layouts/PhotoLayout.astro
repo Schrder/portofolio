@@ -193,17 +193,10 @@ let photoWidth, pageHeight, enhancePageHeight;
 
 if (frontmatter.width > frontmatter.height) {
   photoWidth = `calc(80vh * ${frontmatter.width} / ${frontmatter.height})`;
-  /* This is massive tech deb. This overwrite is needed because if the first image
-   * that is loaded is portrait, the pageHeight will be set to 80vh
-   * this custom property is set on the body tag of this page
-   * that is the problem, because the enhancePageHeight is not for landscape images
-   * that's why we need to reset it here
-   */
-  enhancePageHeight = "auto";
+  pageHeight = "auto";
 } else {
   photoWidth = "auto";
-  pageHeight = "80vh";
-  enhancePageHeight = "80svh";
+  pageHeight = `calc(96vw * ${frontmatter.height} / ${frontmatter.width})`;
 }
 
 const anim = {
@@ -280,9 +273,13 @@ const myFade = {
               hx-trigger="intersect"
               hx-select={`#main-section-${item.title}`}
               style={`
-              --aspect-ratio: ${item.width} / ${item.height}; 
-              --loading-width: ${item.width > item.height ? "100%" : "auto"}; 
-              --loading-height: ${item.width > item.height ? "auto" : "80vh"};
+                --aspect-ratio: ${item.width} / ${item.height}; 
+                --loading-width: ${item.width > item.height ? "100%" : "auto"}; 
+                --loading-height: ${
+                  item.width > item.height
+                    ? "auto"
+                    : `calc(96vw * ${item.height} / ${item.width})`
+                };
               `}
             >
               <aside />
@@ -402,8 +399,8 @@ const myFade = {
   }
 
   .animate > aside {
-    height: var(--loading-height);
     width: var(--loading-width);
+    height: var(--loading-height);
     margin-inline: auto;
     aspect-ratio: var(--aspect-ratio);
     background-color: var(--variant-2);
@@ -411,9 +408,13 @@ const myFade = {
 
   #detail-page :global(img) {
     height: var(--pageHeight);
-    height: var(--enhancePageHeight);
     width: var(--photoWidth);
     aspect-ratio: var(--aspectRatio);
     border-radius: 0;
+  }
+
+  .animate > aside,
+  detail-page :global(img) {
+    max-height: 80vh;
   }
 </style>
