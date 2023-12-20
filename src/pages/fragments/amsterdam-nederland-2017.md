@@ -1,5 +1,5 @@
 ---
-    averageColor: "#9c9c9c"
+    averageColor: "#747474"
     layout: ../../layouts/PhotoLayout.astro
     title: amsterdam-nederland-2017
     description: Amsterdam, Nederland (2017)
