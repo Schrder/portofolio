@@ -33,153 +33,188 @@ import * as IsfahanIran2016 from "../pages/fragments/isfahan-iran-2016.md";
 import * as MadridSpanje2013 from "../pages/fragments/madrid-spanje-2013.md";
 import * as Tokyo2Japan2017 from "../pages/fragments/tokyo-2-japan-2017.md";
 
-const items: { title: string; width: number; height: number }[] = [
+const items: {
+  averageColor: string;
+  title: string;
+  width: number;
+  height: number;
+}[] = [
   {
+    averageColor: BerlijnDuitsland2022.frontmatter.averageColor,
     title: BerlijnDuitsland2022.frontmatter.title,
     width: BerlijnDuitsland2022.frontmatter.width,
     height: BerlijnDuitsland2022.frontmatter.height,
   },
   {
+    averageColor: FunatsuJapan2017.frontmatter.averageColor,
     title: FunatsuJapan2017.frontmatter.title,
     width: FunatsuJapan2017.frontmatter.width,
     height: FunatsuJapan2017.frontmatter.height,
   },
   {
+    averageColor: FransumNederland2017.frontmatter.averageColor,
     title: FransumNederland2017.frontmatter.title,
     width: FransumNederland2017.frontmatter.width,
     height: FransumNederland2017.frontmatter.height,
   },
   {
+    averageColor: Tanabe2Japan2017.frontmatter.averageColor,
     title: Tanabe2Japan2017.frontmatter.title,
     width: Tanabe2Japan2017.frontmatter.width,
     height: Tanabe2Japan2017.frontmatter.height,
   },
   {
+    averageColor: DarelkebdaniMarokko2015.frontmatter.averageColor,
     title: DarelkebdaniMarokko2015.frontmatter.title,
     width: DarelkebdaniMarokko2015.frontmatter.width,
     height: DarelkebdaniMarokko2015.frontmatter.height,
   },
   {
+    averageColor: JeruzalemIsrael2014.frontmatter.averageColor,
     title: JeruzalemIsrael2014.frontmatter.title,
     width: JeruzalemIsrael2014.frontmatter.width,
     height: JeruzalemIsrael2014.frontmatter.height,
   },
   {
+    averageColor: AmsterdamNederland2022.frontmatter.averageColor,
     title: AmsterdamNederland2022.frontmatter.title,
     width: AmsterdamNederland2022.frontmatter.width,
     height: AmsterdamNederland2022.frontmatter.height,
   },
   {
+    averageColor: ArdabilIran2016.frontmatter.averageColor,
     title: ArdabilIran2016.frontmatter.title,
     width: ArdabilIran2016.frontmatter.width,
     height: ArdabilIran2016.frontmatter.height,
   },
   {
+    averageColor: Isfahan2Iran2016.frontmatter.averageColor,
     title: Isfahan3Iran2016.frontmatter.title,
     width: Isfahan3Iran2016.frontmatter.width,
     height: Isfahan3Iran2016.frontmatter.height,
   },
   {
+    averageColor: FujikawaguchikoJapan2017.frontmatter.averageColor,
     title: FujikawaguchikoJapan2017.frontmatter.title,
     width: FujikawaguchikoJapan2017.frontmatter.width,
     height: FujikawaguchikoJapan2017.frontmatter.height,
   },
   {
+    averageColor: LissabonPortugal2023.frontmatter.averageColor,
     title: LissabonPortugal2023.frontmatter.title,
     width: LissabonPortugal2023.frontmatter.width,
     height: LissabonPortugal2023.frontmatter.height,
   },
   {
+    averageColor: LissabonPortugal2015.frontmatter.averageColor,
     title: LissabonPortugal2015.frontmatter.title,
     width: LissabonPortugal2015.frontmatter.width,
     height: LissabonPortugal2015.frontmatter.height,
   },
   {
+    averageColor: TanabeJapan2017.frontmatter.averageColor,
     title: TanabeJapan2017.frontmatter.title,
     width: TanabeJapan2017.frontmatter.width,
     height: TanabeJapan2017.frontmatter.height,
   },
   {
+    averageColor: Geiranger2Noorwegen2022.frontmatter.averageColor,
     title: Geiranger2Noorwegen2022.frontmatter.title,
     width: Geiranger2Noorwegen2022.frontmatter.width,
     height: Geiranger2Noorwegen2022.frontmatter.height,
   },
   {
+    averageColor: Isfahan3Iran2016.frontmatter.averageColor,
     title: Isfahan2Iran2016.frontmatter.title,
     width: Isfahan2Iran2016.frontmatter.width,
     height: Isfahan2Iran2016.frontmatter.height,
   },
   {
+    averageColor: TokyoJapan2017.frontmatter.averageColor,
     title: TokyoJapan2017.frontmatter.title,
     width: TokyoJapan2017.frontmatter.width,
     height: TokyoJapan2017.frontmatter.height,
   },
   {
+    averageColor: SeoulKorea2019.frontmatter.averageColor,
     title: SeoulKorea2019.frontmatter.title,
     width: SeoulKorea2019.frontmatter.width,
     height: SeoulKorea2019.frontmatter.height,
   },
   {
+    averageColor: Isfahan4Iran2016.frontmatter.averageColor,
     title: Isfahan4Iran2016.frontmatter.title,
     width: Isfahan4Iran2016.frontmatter.width,
     height: Isfahan4Iran2016.frontmatter.height,
   },
   {
+    averageColor: Amsterdam2Nederland2017.frontmatter.averageColor,
     title: Amsterdam2Nederland2017.frontmatter.title,
     width: Amsterdam2Nederland2017.frontmatter.width,
     height: Amsterdam2Nederland2017.frontmatter.height,
   },
   {
+    averageColor: Lissabon2Portugal2023.frontmatter.averageColor,
     title: Lissabon2Portugal2023.frontmatter.title,
     width: Lissabon2Portugal2023.frontmatter.width,
     height: Lissabon2Portugal2023.frontmatter.height,
   },
   {
+    averageColor: EnnaItalie2022.frontmatter.averageColor,
     title: EnnaItalie2022.frontmatter.title,
     width: EnnaItalie2022.frontmatter.width,
     height: EnnaItalie2022.frontmatter.height,
   },
   {
+    averageColor: PortoPortugal2015.frontmatter.averageColor,
     title: PortoPortugal2015.frontmatter.title,
     width: PortoPortugal2015.frontmatter.width,
     height: PortoPortugal2015.frontmatter.height,
   },
   {
+    averageColor: AmsterdamNederland2017.frontmatter.averageColor,
     title: AmsterdamNederland2017.frontmatter.title,
     width: AmsterdamNederland2017.frontmatter.width,
     height: AmsterdamNederland2017.frontmatter.height,
   },
   {
+    averageColor: AarhusDenemarken2023.frontmatter.averageColor,
     title: AarhusDenemarken2023.frontmatter.title,
     width: AarhusDenemarken2023.frontmatter.width,
     height: AarhusDenemarken2023.frontmatter.height,
   },
   {
+    averageColor: NoordpolderzijlNederland2017.frontmatter.averageColor,
     title: NoordpolderzijlNederland2017.frontmatter.title,
     width: NoordpolderzijlNederland2017.frontmatter.width,
     height: NoordpolderzijlNederland2017.frontmatter.height,
   },
   {
+    averageColor: GeirangerNoorwegen2022.frontmatter.averageColor,
     title: GeirangerNoorwegen2022.frontmatter.title,
     width: GeirangerNoorwegen2022.frontmatter.width,
     height: GeirangerNoorwegen2022.frontmatter.height,
   },
   {
+    averageColor: QazvinIran2016.frontmatter.averageColor,
     title: QazvinIran2016.frontmatter.title,
     width: QazvinIran2016.frontmatter.width,
     height: QazvinIran2016.frontmatter.height,
   },
   {
+    averageColor: IsfahanIran2016.frontmatter.averageColor,
     title: IsfahanIran2016.frontmatter.title,
     width: IsfahanIran2016.frontmatter.width,
     height: IsfahanIran2016.frontmatter.height,
   },
   {
+    averageColor: MadridSpanje2013.frontmatter.averageColor,
     title: MadridSpanje2013.frontmatter.title,
     width: MadridSpanje2013.frontmatter.width,
     height: MadridSpanje2013.frontmatter.height,
   },
   {
+    averageColor: Tokyo2Japan2017.frontmatter.averageColor,
     title: Tokyo2Japan2017.frontmatter.title,
     width: Tokyo2Japan2017.frontmatter.width,
     height: Tokyo2Japan2017.frontmatter.height,
@@ -280,6 +315,7 @@ const myFade = {
                     ? "auto"
                     : `calc(var(--container-width) * ${item.height} / ${item.width})`
                 };
+                --loading-color: ${item.averageColor};
               `}
             >
               <aside />
@@ -411,7 +447,6 @@ const myFade = {
     height: var(--loading-height);
     margin-inline: auto;
     aspect-ratio: var(--aspect-ratio);
-    background-color: var(--variant-2);
   }
 
   #detail-page :global(img) {
@@ -424,5 +459,6 @@ const myFade = {
   .animate > aside,
   #detail-page :global(img) {
     max-height: var(--max-photo-height);
+    background-color: var(--loading-color, var(--variant2));
   }
 </style>
