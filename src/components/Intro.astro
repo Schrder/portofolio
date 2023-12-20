@@ -1,5 +1,6 @@
 ---
 import Photo from "./Photo.astro";
+import * as TanabeJapan2017 from "../pages/fragments/tanabe-japan-2017.md";
 
 const images = [
   { title: "tanabe-portrait-japan-2017", media: "(max-width: 768px)" },
@@ -7,7 +8,7 @@ const images = [
 ];
 ---
 
-<header>
+<header style={`--loading-color: ${TanabeJapan2017.frontmatter.averageColor}`}>
   <Photo images={images} loading="eager" />
   <div>
     <h1>tom van der bijl<span>l</span></h1>
@@ -36,6 +37,10 @@ const images = [
     grid-row: 1 / span 2;
     grid-column: 1;
     --photo-border-radius: 0;
+  }
+
+  header > :global(picture) > :global(img) {
+    background-color: var(--loading-color);
   }
 
   h1:hover span {
