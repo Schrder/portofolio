@@ -1,4 +1,5 @@
 ---
+    averageColor: "#9ab961"
     layout: ../../layouts/PhotoLayout.astro
     title: qazvin-iran-2016
     description: Qazvin, Iran (2016)

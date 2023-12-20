@@ -37,6 +37,7 @@ interface PhotoLayout {
   sizes: string;
   loading?: "eager" | "lazy";
   media?: string;
+  averageColor: string;
 }
 
 interface TextLayout {
@@ -45,21 +46,25 @@ interface TextLayout {
 
 const items: (PhotoLayout | TextLayout)[] = [
   {
+    averageColor: BerlijnDuitsland2022.frontmatter.averageColor,
     sizes: "66vw",
     title: BerlijnDuitsland2022.frontmatter.title,
     loading: "eager",
   },
   {
+    averageColor: FunatsuJapan2017.frontmatter.averageColor,
     sizes: "33vw",
     title: FunatsuJapan2017.frontmatter.title,
     loading: "eager",
   },
   {
+    averageColor: FransumNederland2017.frontmatter.averageColor,
     sizes: "33vw",
     title: FransumNederland2017.frontmatter.title,
     loading: "eager",
   },
   {
+    averageColor: Tanabe2Japan2017.frontmatter.averageColor,
     sizes: "66vw",
     title: Tanabe2Japan2017.frontmatter.title,
     loading: "eager",
@@ -68,21 +73,25 @@ const items: (PhotoLayout | TextLayout)[] = [
     text: "tom van der bijll (1993), wonend in amsterdam",
   },
   {
+    averageColor: DarelkebdaniMarokko2015.frontmatter.averageColor,
     sizes: "50vw",
     title: DarelkebdaniMarokko2015.frontmatter.title,
     loading: "eager",
   },
   {
+    averageColor: JeruzalemIsrael2014.frontmatter.averageColor,
     sizes: "50vw",
     title: JeruzalemIsrael2014.frontmatter.title,
     loading: "eager",
   },
   {
+    averageColor: AmsterdamNederland2022.frontmatter.averageColor,
     sizes: "100vw",
     title: AmsterdamNederland2022.frontmatter.title,
     loading: "eager",
   },
   {
+    averageColor: ArdabilIran2016.frontmatter.averageColor,
     sizes: "100vw",
     title: ArdabilIran2016.frontmatter.title,
     loading: "eager",
@@ -91,30 +100,37 @@ const items: (PhotoLayout | TextLayout)[] = [
     text: "opgeleid als cultureel antropoloog en socioloog",
   },
   {
+    averageColor: Isfahan2Iran2016.frontmatter.averageColor,
     sizes: "50vw",
     title: Isfahan3Iran2016.frontmatter.title,
   },
   {
+    averageColor: FujikawaguchikoJapan2017.frontmatter.averageColor,
     sizes: "50vw",
     title: FujikawaguchikoJapan2017.frontmatter.title,
   },
   {
+    averageColor: LissabonPortugal2023.frontmatter.averageColor,
     sizes: "101vw",
     title: LissabonPortugal2023.frontmatter.title,
   },
   {
+    averageColor: LissabonPortugal2015.frontmatter.averageColor,
     sizes: "66vw",
     title: LissabonPortugal2015.frontmatter.title,
   },
   {
+    averageColor: TanabeJapan2017.frontmatter.averageColor,
     sizes: "33vw",
     title: TanabeJapan2017.frontmatter.title,
   },
   {
+    averageColor: Geiranger2Noorwegen2022.frontmatter.averageColor,
     sizes: "33vw",
     title: Geiranger2Noorwegen2022.frontmatter.title,
   },
   {
+    averageColor: Isfahan3Iran2016.frontmatter.averageColor,
     sizes: "100vw",
     title: Isfahan2Iran2016.frontmatter.title,
   },
@@ -122,22 +138,27 @@ const items: (PhotoLayout | TextLayout)[] = [
     text: "fotografeert vanaf zijn vijftiende, toen nog met een geleende camera",
   },
   {
+    averageColor: TokyoJapan2017.frontmatter.averageColor,
     sizes: "75vw",
     title: TokyoJapan2017.frontmatter.title,
   },
   {
+    averageColor: SeoulKorea2019.frontmatter.averageColor,
     sizes: "66vw",
     title: SeoulKorea2019.frontmatter.title,
   },
   {
+    averageColor: Isfahan4Iran2016.frontmatter.averageColor,
     sizes: "33vw",
     title: Isfahan4Iran2016.frontmatter.title,
   },
   {
+    averageColor: Amsterdam2Nederland2017.frontmatter.averageColor,
     sizes: "100vw",
     title: Amsterdam2Nederland2017.frontmatter.title,
   },
   {
+    averageColor: Lissabon2Portugal2023.frontmatter.averageColor,
     sizes: "100vw",
     title: Lissabon2Portugal2023.frontmatter.title,
   },
@@ -145,30 +166,37 @@ const items: (PhotoLayout | TextLayout)[] = [
     text: "richt zich met name op straatfotografie, zowel analoog als digitaal",
   },
   {
+    averageColor: EnnaItalie2022.frontmatter.averageColor,
     sizes: "66vw",
     title: EnnaItalie2022.frontmatter.title,
   },
   {
+    averageColor: PortoPortugal2015.frontmatter.averageColor,
     sizes: "33vw",
     title: PortoPortugal2015.frontmatter.title,
   },
   {
+    averageColor: AmsterdamNederland2017.frontmatter.averageColor,
     sizes: "75vw",
     title: AmsterdamNederland2017.frontmatter.title,
   },
   {
+    averageColor: AarhusDenemarken2023.frontmatter.averageColor,
     sizes: "33vw",
     title: AarhusDenemarken2023.frontmatter.title,
   },
   {
+    averageColor: NoordpolderzijlNederland2017.frontmatter.averageColor,
     sizes: "33vw",
     title: NoordpolderzijlNederland2017.frontmatter.title,
   },
   {
+    averageColor: GeirangerNoorwegen2022.frontmatter.averageColor,
     sizes: "66vw",
     title: GeirangerNoorwegen2022.frontmatter.title,
   },
   {
+    averageColor: QazvinIran2016.frontmatter.averageColor,
     sizes: "100vw",
     title: QazvinIran2016.frontmatter.title,
   },
@@ -176,14 +204,17 @@ const items: (PhotoLayout | TextLayout)[] = [
     text: 'voor informatie en fotoprints: <a href="mailto:info@tomvanderbijll.com">info@tomvanderbijll.com</a>',
   },
   {
+    averageColor: IsfahanIran2016.frontmatter.averageColor,
     sizes: "100vw",
     title: IsfahanIran2016.frontmatter.title,
   },
   {
+    averageColor: MadridSpanje2013.frontmatter.averageColor,
     sizes: "100vw",
     title: MadridSpanje2013.frontmatter.title,
   },
   {
+    averageColor: Tokyo2Japan2017.frontmatter.averageColor,
     sizes: "100vw",
     title: Tokyo2Japan2017.frontmatter.title,
   },
@@ -204,6 +235,7 @@ const items: (PhotoLayout | TextLayout)[] = [
                 href={`${import.meta.env.BASE_URL}fragments/${photo.title}`}
                 style={{
                   "--photo-grid-area": `item${index + 1}`,
+                  "--photo-average-color": photo.averageColor,
                 }}
               >
                 <Photo
@@ -344,6 +376,10 @@ const items: (PhotoLayout | TextLayout)[] = [
   a,
   aside {
     grid-area: var(--photo-grid-area);
+  }
+
+  a :global(img) {
+    background-color: var(--photo-average-color);
   }
 
   aside {
