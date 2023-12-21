@@ -402,6 +402,9 @@ const myFade = {
     height: 95vh;
     height: 95svh;
     scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   @media (min-width: 768px) {
@@ -427,6 +430,5 @@ const myFade = {
   .animate > aside,
   #detail-page :global(img) {
     max-height: var(--max-photo-height);
-    background-color: var(--variant-2);
   }
 </style>
