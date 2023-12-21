@@ -19,7 +19,7 @@ const { title } = Astro.props;
     <slot name="head" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V596Y2PN40"
     ></script>
-    <script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
