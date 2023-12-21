@@ -226,18 +226,6 @@ const myFade = {
 ---
 
 <Layout title={title}>
-  <script defer slot="head" src="https://unpkg.com/htmx.org@1.9.9"></script>
-  <script
-    defer
-    slot="head"
-    src="https://unpkg.com/htmx.org/dist/ext/head-support.js"></script>
-  <script is:inline>
-    if (window.htmx) {
-      document.addEventListener("astro:page-load", () => {
-        htmx.process(document);
-      });
-    }
-  </script>
   <main>
     <nav>
       <a href="/"> <img id="logo" src="/logo.png" alt="logo" /></a>
@@ -271,11 +259,8 @@ const myFade = {
           }
           return (
             <div
+              id={item.title}
               class="animate"
-              hx-get={`/fragments/${item.title}`}
-              hx-swap="innerHTML"
-              hx-trigger="intersect"
-              hx-select={`#main-section-${item.title}`}
               style={`
                 --aspect-ratio: ${item.width} / ${item.height}; 
                 --loading-width: ${item.width > item.height ? "100%" : "auto"}; 
@@ -292,6 +277,48 @@ const myFade = {
         })
       }
     </section>
+    <script is:inline>
+      function handleIntersection(entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const title = entry.target.id;
+            const target = document.querySelector(`#${title}`);
+            if (entry.target.children[0].nodeName.toLowerCase() === "aside") {
+              htmx.ajax("GET", `/fragments/${title}`, {
+                target: target,
+                swap: "innerHTML",
+                select: `#main-section-${title}`,
+              });
+            }
+          }
+        });
+      }
+
+      const observer = new IntersectionObserver(handleIntersection, {
+        root: document.querySelector("section"),
+        rootMargin: "50% 0px 50% 0px",
+      });
+
+      const children = document.querySelectorAll("section .animate");
+
+      if (window.htmx) {
+        document.addEventListener("astro:page-load", () => {
+          children.forEach((child) => {
+            observer.observe(child);
+          });
+        });
+      } else {
+        const htmxScript = document.createElement("script");
+        htmxScript.src = "https://unpkg.com/htmx.org@1.9.9";
+        htmxScript.defer = true;
+        htmxScript.onload = () => {
+          children.forEach((child) => {
+            observer.observe(child);
+          });
+        };
+        document.head.appendChild(htmxScript);
+      }
+    </script>
     <script is:inline define:vars={{ title }}>
       document.querySelector(`#${title}`).parentElement.scrollIntoView();
     </script>
@@ -430,5 +457,6 @@ const myFade = {
   .animate > aside,
   #detail-page :global(img) {
     max-height: var(--max-photo-height);
+    background-color: var(--variant-2);
   }
 </style>
