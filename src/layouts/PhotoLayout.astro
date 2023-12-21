@@ -283,10 +283,9 @@ const myFade = {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const title = entry.target.id;
-              const target = document.querySelector(`#${title}`);
               if (entry.target.children[0].nodeName.toLowerCase() === "aside") {
                 htmx.ajax("GET", `/fragments/${title}`, {
-                  target: target,
+                  target: document.querySelector(`#${title}`),
                   swap: "innerHTML",
                   select: `#main-section-${title}`,
                 });
