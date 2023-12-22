@@ -17,8 +17,10 @@ const { title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions fallback="swap" />
     <slot name="head" />
-    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-V596Y2PN40"
-    ></script>
+    <script
+      defer
+      fetchpriority="low"
+      src="https://www.googletagmanager.com/gtag/js?id=G-V596Y2PN40"></script>
     <script is:inline>
       if (window.location.hostname !== "localhost") {
         window.dataLayer = window.dataLayer || [];
