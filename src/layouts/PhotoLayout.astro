@@ -314,16 +314,8 @@ const myFade = {
           rootMargin: "50% 0px 50% 0px",
         });
 
-        const children = document.querySelectorAll("section .animate");
-
-        children.forEach((child) => {
+        document.querySelectorAll("section .animate").forEach((child) => {
           observer.observe(child);
-        });
-
-        document.addEventListener("astro:page-load", () => {
-          children.forEach((child) => {
-            observer.observe(child);
-          });
         });
       })();
     </script>
