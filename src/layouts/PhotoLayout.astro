@@ -283,16 +283,27 @@ const myFade = {
     </section>
     <script is:inline defer>
       (() => {
+        const parser = new DOMParser();
+
         function handleIntersection(entries) {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const title = entry.target.id;
               if (entry.target.children[0].nodeName.toLowerCase() === "aside") {
-                htmx.ajax("GET", `/fragments/${title}`, {
-                  target: document.querySelector(`#${title}`),
-                  swap: "innerHTML",
-                  select: `#main-section-${title}`,
-                });
+                fetch(`/fragments/${title}`)
+                  .then((response) => response.text())
+                  .then((html) => {
+                    const fragmentHTML = parser.parseFromString(
+                      html,
+                      "text/html",
+                    );
+
+                    document
+                      .getElementById(`${title}`)
+                      .replaceChildren(
+                        fragmentHTML.getElementById(`main-section-${title}`),
+                      );
+                  });
               }
             }
           });
@@ -300,28 +311,20 @@ const myFade = {
 
         const observer = new IntersectionObserver(handleIntersection, {
           root: document.querySelector("section"),
-          rootMargin: "50% 0px 50% 0px",
+          rootMargin: "50px 0px 50px 0px",
         });
 
         const children = document.querySelectorAll("section .animate");
 
-        if (window.htmx) {
-          document.addEventListener("astro:page-load", () => {
-            children.forEach((child) => {
-              observer.observe(child);
-            });
+        children.forEach((child) => {
+          observer.observe(child);
+        });
+
+        document.addEventListener("astro:page-load", () => {
+          children.forEach((child) => {
+            observer.observe(child);
           });
-        } else {
-          const htmxScript = document.createElement("script");
-          htmxScript.src = "https://unpkg.com/htmx.org@1.9.9";
-          htmxScript.defer = true;
-          htmxScript.onload = () => {
-            children.forEach((child) => {
-              observer.observe(child);
-            });
-          };
-          document.head.appendChild(htmxScript);
-        }
+        });
       })();
     </script>
     <script is:inline define:vars={{ title }}>
