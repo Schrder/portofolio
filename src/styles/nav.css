@@ -16,6 +16,15 @@ main > nav a {
   font-weight: 100;
 }
 
+main > nav > div > a {
+  transition: font-weight 0.2s ease-out, letter-spacing 0.2s ease-out;
+}
+
+main > nav > div > a:hover {
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
 #logo {
   height: 2em;
 }
