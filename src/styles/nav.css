@@ -10,17 +10,13 @@ main > nav {
 }
 
 main > nav a {
-  text-decoration: none;
+  text-decoration: none:
   display: block;
   color: var(--text-color);
   font-weight: 100;
 }
 
-main > nav a {
-  transition: font-weight 0.2s ease-out;
-}
-
-main > nav a:hover {
+main > nav > div > a {
   text-decoration: underline;
 }
 
