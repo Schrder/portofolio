@@ -29,10 +29,6 @@
   transition: font-weight 0.2s ease-out;
 }
 
-.Navigation-item:hover {
-  text-decoration: underline;
-}
-
 .Navigation-logo {
   height: 2em;
 }
