@@ -2,6 +2,8 @@
 import Photo from "../components/Photo.astro";
 import Layout from "./Layout.astro";
 import "../styles/nav.css";
+import "../styles/sticky-nav.css";
+import "../styles/navigation-name-reset.css";
 import * as BerlijnDuitsland2022 from "../pages/fragments/berlijn-duitsland-2022.md";
 import * as FunatsuJapan2017 from "../pages/fragments/funatsu-japan-2017.md";
 import * as FransumNederland2017 from "../pages/fragments/fransum-nederland-2017.md";
@@ -227,25 +229,22 @@ const myFade = {
 
 <Layout title={title}>
   <main>
-    <nav>
-      <a href="/"> <img id="logo" src="/logo.png" alt="logo" /></a>
-      <h2><a href="/#photos">tom van der bijl<span>l</span></a></h2>
-      <div>
-        <a href="https://instagram.com/tomvanderbijll">instagram</a>
-        <a id="contact" href="/contact">contact</a>
+    <nav class="Navigation">
+      <a class="Navigation-link" href="/">
+        <img class="Navigation-logo" src="/logo.png" alt="logo" /></a
+      >
+      <h2 class="Navigation-heading">
+        <a class="Navigation-name" href="/#photos"
+          >tom van der bijl<span>l</span></a
+        >
+      </h2>
+      <div class="Navigation-menu">
+        <a class="Navigation-item" href="/contact">contact</a>
+        <a class="Navigation-item" href="https://instagram.com/tomvanderbijll"
+          >instagram</a
+        >
       </div>
     </nav>
-    <style>
-      nav > a:first-of-type {
-        width: 44px;
-        grid-row: 1;
-        grid-column: 1;
-      }
-      main > nav {
-        position: sticky;
-        top: 0;
-      }
-    </style>
     <section id="detail-page">
       {
         items.map((item) => {

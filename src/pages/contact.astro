@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/nav.css";
-
+import "../styles/navigation-name-reset.css";
 const imageUrl = `${import.meta.env.BASE_URL}assets/bio-foto_2400px.avif`;
 
 export interface Props {
@@ -23,12 +23,20 @@ const socialImageURL = new URL(
   <meta property="og:url" content={canonicalURL} slot="head" />
   <meta property="og:image" content={socialImageURL} slot="head" />
   <main>
-    <nav>
-      <a href="/"> <img id="logo" src="/logo.png" alt="logo" /></a>
-      <h2><a href="/#photos">tom van der bijl<span>l</span></a></h2>
-      <div>
-        <a href="https://instagram.com/tomvanderbijll">instagram</a>
-        <a id="contact" href="/contact">contact</a>
+    <nav class="Navigation">
+      <a class="Navigation-link" href="/">
+        <img class="Navigation-logo" src="/logo.png" alt="logo" /></a
+      >
+      <h2 class="Navigation-heading">
+        <a class="Navigation-name" href="/#photos"
+          >tom van der bijl<span>l</span></a
+        >
+      </h2>
+      <div class="Navigation-menu">
+        <a class="Navigation-item" href="https://instagram.com/tomvanderbijll"
+          >instagram</a
+        >
+        <a class="Navigation-item" href="/contact">contact</a>
       </div>
     </nav>
     <section>
@@ -74,20 +82,12 @@ const socialImageURL = new URL(
   </main>
 </Layout>
 <style>
-  nav > a {
-    width: 44px;
-    grid-row: 1;
-    grid-column: 1;
-  }
-
   footer:first-of-type {
     text-align: center;
     padding: 1rem;
     padding: 1rlh;
     padding-block-start: 0;
   }
-</style>
-<style>
   footer:last-of-type {
     background-color: var(--background-color);
     padding: 0.5em;

@@ -1,4 +1,4 @@
-main > nav {
+.Navigation {
   border-block-end: 1px solid black;
   background-color: var(--variant-2);
   display: grid;
@@ -7,28 +7,37 @@ main > nav {
   z-index: 1;
   padding-block: 0.25em;
   font-size: 1rem;
+        position: sticky;
+        top: 0;
 }
 
-main > nav a {
+.Navigation-link {
+  width: 44px;
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.Navigation-menu {
+  display: none;
+}
+
+.Navigation-item {
   text-decoration: none;
   display: block;
   color: var(--text-color);
   font-weight: 100;
-}
-
-main > nav a {
   transition: font-weight 0.2s ease-out;
 }
 
-main > nav a:hover {
+.Navigation-item:hover {
   text-decoration: underline;
 }
 
-#logo {
+.Navigation-logo {
   height: 2em;
 }
 
-main > nav > h2 {
+.Navigation-heading {
   cursor: default;
   font-size: 1.5em;
   font-weight: 200;
@@ -37,16 +46,18 @@ main > nav > h2 {
   grid-row: 1;
 }
 
-main > nav > div {
-  display: none;
+.Navigation-heading:hover span {
+  display: inline-block;
+  transform: translateX(4px);
+  transition: all 0.5s ease-out;
 }
 
 @media (min-width: 768px) {
-  main > nav {
+  .Navigation {
     font-size: 1.25rem;
   }
 
-  main > nav > div {
+  .Navigation-menu {
     grid-row: 1;
     grid-column: 2;
     justify-self: end;
@@ -54,14 +65,4 @@ main > nav > div {
     gap: 0.5em;
     align-items: center;
   }
-  
-  main > nav > div > a:first-of-type {
-    order: 2;
-  }
-}
-
-main > nav h2:hover span {
-  display: inline-block;
-  transform: translateX(4px);
-  transition: all 0.5s ease-out;
 }

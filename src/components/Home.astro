@@ -1,5 +1,6 @@
 ---
-import HomeNavigation from "../components/HomeNavigation.astro";
+import "../styles/nav.css";
+import "../styles/sticky-nav.css";
 import Photo from "./Photo.astro";
 import * as BerlijnDuitsland2022 from "../pages/fragments/berlijn-duitsland-2022.md";
 import * as FunatsuJapan2017 from "../pages/fragments/funatsu-japan-2017.md";
@@ -222,7 +223,20 @@ const items: (PhotoLayout | TextLayout)[] = [
 ---
 
 <main>
-  <HomeNavigation />
+  <nav id="photos" class="Navigation">
+    <button class="Navigation-link"
+      ><img class="Navigation-logo" src="/logo.png" alt="logo" /></button
+    >
+    <h2 class="Navigation-heading">
+      <button class="Navigation-name">tom van der bijl<span>l</span></button>
+    </h2>
+    <div class="Navigation-menu">
+      <a class="Navigation-item" href="/contact">contact</a>
+      <a class="Navigation-item" href="https://instagram.com/tomvanderbijll"
+        >instagram</a
+      >
+    </div>
+  </nav>
   <section>
     <div>
       {
@@ -261,6 +275,17 @@ const items: (PhotoLayout | TextLayout)[] = [
       }
     </div>
   </section>
+  <script is:inline>
+    document.querySelector(".Navigation-link").addEventListener("click", () => {
+      document.body.scrollIntoView({ behavior: "smooth" });
+    });
+
+    document.querySelector(".Navigation-name").addEventListener("click", () => {
+      document
+        .querySelector("main")
+        .scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
   <style>
     footer {
       background-color: var(--background-color);
@@ -298,6 +323,16 @@ const items: (PhotoLayout | TextLayout)[] = [
   </footer>
 </main>
 <style>
+  .Navigation-link,
+  .Navigation-name {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
   section {
     container-type: inline-size;
   }
@@ -389,7 +424,7 @@ const items: (PhotoLayout | TextLayout)[] = [
     justify-content: center;
   }
 
-  span {
+  section span {
     font-size: 5vw;
     font-size: 22cqh;
     font-weight: 100;
