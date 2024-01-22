@@ -4,4 +4,7 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   site: "https://tomvanderbijll.com",
   scopedStyleStrategy: "where",
+  build: {
+    target: "es2015"
+  }
 });
