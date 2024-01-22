@@ -5,6 +5,6 @@ export default defineConfig({
   site: "https://tomvanderbijll.com",
   scopedStyleStrategy: "where",
   build: {
-    target: "es2015"
+    target: "safari11"
   }
 });

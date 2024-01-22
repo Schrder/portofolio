@@ -19,8 +19,14 @@ const socialImageURL = new URL(
   <Intro />
   <Home />
   <script is:inline>
-    document.querySelector("header button")?.addEventListener("click", () => {
-      document.querySelector("nav")?.scrollIntoView({ behavior: "smooth" });
-    });
+    const button = document.querySelector("header button");
+    if (button) {
+      document.querySelector("header button").addEventListener("click", () => {
+        const nav = document.querySelector("nav");
+        if (nav) {
+          nav.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }
   </script>
 </Layout>

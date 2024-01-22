@@ -75,10 +75,11 @@ const fallbackImage = `${prefix}/${images[0].title}_800px.jpg`;
 </style>
 <script>
   const imgElement = document.querySelector("picture > img[data-animate]");
-
-  imgElement?.addEventListener("load", () => {
-    imgElement.classList.add("loaded");
-  });
+  if (imgElement) {
+    imgElement.addEventListener("load", () => {
+      imgElement.classList.add("loaded");
+    });
+  }
 </script>
 <picture class={className}>
   {
