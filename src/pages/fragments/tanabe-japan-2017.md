@@ -3,6 +3,8 @@
     layout: ../../layouts/PhotoLayout.astro
     title: tanabe-japan-2017
     description: Tanabe, Japan (2017)
+    detailsenglish: Tori gate in the distance
+    detailsdutch: Tori poort in de verte
     width: 6774
     height: 4492
 ---

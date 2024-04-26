@@ -3,8 +3,8 @@
     layout: ../../layouts/PhotoLayout.astro
     title: aarhus-denemarken-2023
     origin: Århus, Denemarken (2023)
-    detailsEnglish: 
-    detailsDutch: 
+    detailsEnglish: Upside down
+    detailsDutch: Omgekeerde wereld
     width: 6000
     height: 4000
 ---

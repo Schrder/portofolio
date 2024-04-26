@@ -3,6 +3,8 @@
     layout: ../../layouts/PhotoLayout.astro
     title: geiranger-2-noorwegen-2022
     description: Geiranger, Noorwegen (2022)
+    detailsenglish: Lounging below deck
+    detailsdutch: Benedendeks
     width: 6000
     height: 4000
 ---
