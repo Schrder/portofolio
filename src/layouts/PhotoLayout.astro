@@ -256,7 +256,18 @@ const myFade = {
                   loading="eager"
                   fetchPriority="high"
                 />
-                <h1 transition:animate={myFade}>{frontmatter.description}</h1>
+                <div class="text-container">
+                  <div>
+                    <h1 transition:animate={myFade}>
+                      {frontmatter.description}
+                      <span class="year">({frontmatter.year})</span>
+                    </h1>
+                  </div>
+                  <div class="details">
+                    <p>{frontmatter.detailsEnglish}</p>
+                    <p>{frontmatter.detailsDutch}</p>
+                  </div>
+                </div>
               </div>
             );
           }
@@ -389,12 +400,12 @@ const myFade = {
     height: 100vh;
     height: 100svh;
     --container-width: 96vw;
-    --max-photo-height: 80svh;
+    --max-photo-height: 70svh;
   }
 
   @supports not (height: 1svh) {
     main {
-      --max-photo-height: 80vh;
+      --max-photo-height: 70vh;
     }
   }
 
@@ -410,10 +421,15 @@ const myFade = {
     }
   }
 
+  .text-container {
+    text-align: center;
+  }
+
   h1 {
+    margin-top: 0.75vh;
     font-size: 1rem;
     font-weight: 200;
-    text-align: center;
+    margin-bottom: 0;
   }
 
   section {
@@ -430,18 +446,6 @@ const myFade = {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  @media (min-width: 668px) {
-    h1 {
-      font-size: 1.4rem;
-    }
-
-    section > div {
-      height: 95vh;
-      height: 95svh;
-      justify-content: flex-start;
-    }
   }
 
   .animate > aside {
@@ -462,5 +466,42 @@ const myFade = {
   #detail-page :global(img) {
     max-height: var(--max-photo-height);
     background-color: var(--variant-2);
+  }
+
+  .year {
+    font-size: 0.95em;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-weight: 100;
+    margin-top: 0.5vh;
+    font-size: 0.8rem;
+  }
+
+  .details > p {
+    margin: 0;
+  }
+
+  @media (min-width: 668px) {
+    h1 {
+      font-size: 1.4rem;
+    }
+
+    section > div {
+      height: 95vh;
+      height: 95svh;
+      justify-content: flex-start;
+    }
+
+    .details {
+      font-size: 1rem;
+    }
+
+    main {
+      --max-photo-height: 78svh;
+    }
   }
 </style>
