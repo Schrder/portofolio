@@ -225,6 +225,22 @@ const myFade = {
   forwards: anim,
   backwards: anim,
 };
+
+const detailAnimation = {
+  old: {
+    ...anim.old,
+    delay: "100ms",
+  },
+  new: {
+    ...anim.new,
+    delay: "150ms",
+  },
+};
+
+const myDetailFade = {
+  forwards: detailAnimation,
+  backwards: detailAnimation,
+};
 ---
 
 <Layout title={title}>
@@ -263,8 +279,8 @@ const myFade = {
                       <span class="year">({frontmatter.year})</span>
                     </h1>
                   </div>
-                  <div class="details">
-                    <p>{frontmatter.detailsEnglish}</p>
+                  <div class="details" transition:animate={myDetailFade}>
+                    <p class="english">{frontmatter.detailsEnglish}/</p>
                     <p>{frontmatter.detailsDutch}</p>
                   </div>
                 </div>
@@ -474,12 +490,18 @@ const myFade = {
 
   .details {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     gap: 0.25rem;
     font-weight: 100;
     margin-top: 0.5vh;
     font-size: 0.8rem;
   }
+
+  /*
+  .english {
+    font-weight: 400;
+  }
+   */
 
   .details > p {
     margin: 0;
