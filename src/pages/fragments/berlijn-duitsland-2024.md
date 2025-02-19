@@ -5,7 +5,7 @@
     description: Berlijn, Duitsland
     year: 2024
     detailsEnglish: Different perspective
-    detailsDutch: Verschillend perspectief
+    detailsDutch: Ander perspectief
     width: 9304
     height: 6059
 ---
