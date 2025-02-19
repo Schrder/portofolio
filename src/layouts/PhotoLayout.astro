@@ -11,7 +11,7 @@ import * as Tanabe2Japan2017 from "../pages/fragments/tanabe-2-japan-2017.md";
 import * as DarelkebdaniMarokko2015 from "../pages/fragments/darelkebdani-marokko-2015.md";
 import * as JeruzalemIsrael2014 from "../pages/fragments/jeruzalem-israel-2014.md";
 import * as AmsterdamNederland2022 from "../pages/fragments/amsterdam-nederland-2022.md";
-import * as ArdabilIran2016 from "../pages/fragments/ardabil-iran-2016.md";
+import * as BerlijnDuitsland2024 from "../pages/fragments/berlijn-duitsland-2024.md";
 import * as Isfahan2Iran2016 from "../pages/fragments/isfahan-2-iran-2016.md";
 import * as FujikawaguchikoJapan2017 from "../pages/fragments/fujikawaguchiko-japan-2017.md";
 import * as LissabonPortugal2023 from "../pages/fragments/lissabon-portugal-2023.md";
@@ -76,9 +76,9 @@ const items: {
     height: AmsterdamNederland2022.frontmatter.height,
   },
   {
-    title: ArdabilIran2016.frontmatter.title,
-    width: ArdabilIran2016.frontmatter.width,
-    height: ArdabilIran2016.frontmatter.height,
+    title: BerlijnDuitsland2024.frontmatter.title,
+    width: BerlijnDuitsland2024.frontmatter.width,
+    height: BerlijnDuitsland2024.frontmatter.height,
   },
   {
     title: Isfahan3Iran2016.frontmatter.title,
@@ -225,6 +225,22 @@ const myFade = {
   forwards: anim,
   backwards: anim,
 };
+
+const detailAnimation = {
+  old: {
+    ...anim.old,
+    delay: "100ms",
+  },
+  new: {
+    ...anim.new,
+    delay: "150ms",
+  },
+};
+
+const myDetailFade = {
+  forwards: detailAnimation,
+  backwards: detailAnimation,
+};
 ---
 
 <Layout title={title}>
@@ -256,7 +272,18 @@ const myFade = {
                   loading="eager"
                   fetchPriority="high"
                 />
-                <h1 transition:animate={myFade}>{frontmatter.description}</h1>
+                <div class="text-container">
+                  <div>
+                    <h1 transition:animate={myFade}>
+                      {frontmatter.description}
+                      <span class="year">({frontmatter.year})</span>
+                    </h1>
+                  </div>
+                  <div class="details" transition:animate={myDetailFade}>
+                    <p>{frontmatter.detailsEnglish} -</p>
+                    <p>{frontmatter.detailsDutch}</p>
+                  </div>
+                </div>
               </div>
             );
           }
@@ -389,12 +416,12 @@ const myFade = {
     height: 100vh;
     height: 100svh;
     --container-width: 96vw;
-    --max-photo-height: 80svh;
+    --max-photo-height: 70svh;
   }
 
   @supports not (height: 1svh) {
     main {
-      --max-photo-height: 80vh;
+      --max-photo-height: 70vh;
     }
   }
 
@@ -410,10 +437,15 @@ const myFade = {
     }
   }
 
+  .text-container {
+    text-align: center;
+  }
+
   h1 {
+    margin-top: 0.75vh;
     font-size: 1rem;
     font-weight: 200;
-    text-align: center;
+    margin-bottom: 0;
   }
 
   section {
@@ -430,18 +462,6 @@ const myFade = {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  @media (min-width: 668px) {
-    h1 {
-      font-size: 1.4rem;
-    }
-
-    section > div {
-      height: 95vh;
-      height: 95svh;
-      justify-content: flex-start;
-    }
   }
 
   .animate > aside {
@@ -462,5 +482,42 @@ const myFade = {
   #detail-page :global(img) {
     max-height: var(--max-photo-height);
     background-color: var(--variant-2);
+  }
+
+  .year {
+    font-size: 0.95em;
+  }
+
+  .details {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    font-weight: 100;
+    margin-top: 0.5vh;
+    font-size: 0.8rem;
+  }
+
+  .details > p {
+    margin: 0;
+  }
+
+  @media (min-width: 668px) {
+    h1 {
+      font-size: 1.4rem;
+    }
+
+    section > div {
+      height: 95vh;
+      height: 95svh;
+      justify-content: flex-start;
+    }
+
+    .details {
+      font-size: 1rem;
+    }
+
+    main {
+      --max-photo-height: 78svh;
+    }
   }
 </style>
